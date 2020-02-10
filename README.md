@@ -65,4 +65,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## API / Events
 
-For all the documention about all the different functions and options open `docs/index.html` in a browser.
+For all the documention about all the different functions and options see [API Docs](docs/globals.md)
