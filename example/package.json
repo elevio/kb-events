@@ -1,0 +1,22 @@
+{
+  "name": "typescript-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./server/index.js",
+    "prebuild": "rm -rf ./lib/*",
+    "build": "webpack"
+  },
+  "author": "Kristian Puccio",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
