@@ -1,12 +1,17 @@
 {
-  "name": "analytics-kb",
+  "name": "@elevio/events",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elevio/elevio-events"
+  },
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./lib",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "postbuild": "npx rollup -c ./rollup.config.js"
+    "postbuild": "npx rollup -c ./rollup.config.js",
+    "gen-docs": "typedoc --out docs src"
   },
   "files": [
     "lib"
@@ -24,6 +29,7 @@
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-typescript2": "^0.25.3",
     "tslib": "^1.10.0",
+    "typedoc": "^0.16.9",
     "typescript": "^3.7.5"
   }
 }
