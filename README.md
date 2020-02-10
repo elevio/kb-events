@@ -3,7 +3,7 @@
 This is the code required to send knowledge base analytic events to Elevio.
 It is written in Typescript but works fine in plain Javascript.
 
-## Instalation
+## Installation
 
 Run `npm i` to install all dependencies.
 
@@ -60,7 +60,7 @@ This returns a promise that you can wait on.
 // this may change, depending on how you install
 import { setup, sendNow, events } from 'analytics';
 
-setup({ companyUid: 'my-companyUID' });
+setup({ companyUid: 'companyUID' });
 
 document.addEventListener('DOMContentLoaded', function() {
   sendNow(events.pageViewArticle('art123', 'article title')).then(() => {
