@@ -55,7 +55,7 @@ export function getAll() {
     customer_uid: _company_uid,
     page_document_size_height: docHeight,
     page_document_size_width: docWidth,
-    page_page_offset_left: Math.max(
+    page_offset_left: Math.max(
       window.pageXOffset || document.body.scrollLeft || 0
     ),
     page_page_offset_top: Math.max(
