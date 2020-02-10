@@ -65,4 +65,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## API / Events
 
-For all the documention about all the different functions and options see [API Docs](docs/globals.md)
+For all the documention about all the different functions and options see [API docs](docs/globals.md) or here [HTML docs](https://elevio.github.io/elevio-events/globals.html)
