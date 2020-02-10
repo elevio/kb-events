@@ -11,7 +11,7 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "postbuild": "npx rollup -c ./rollup.config.js",
-    "gen-docs": "typedoc --out docs src"
+    "gen-docs": "typedoc --theme markdown --out docs src"
   },
   "files": [
     "lib"
@@ -30,6 +30,7 @@
     "rollup-plugin-typescript2": "^0.25.3",
     "tslib": "^1.10.0",
     "typedoc": "^0.16.9",
+    "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.7.5"
   }
 }
