@@ -4,27 +4,21 @@ import { _debugMode } from './index';
 const TYPE = 'web-kb-event-2';
 const ENDPOINT_URL = 'https://events.elev.io/v1/events';
 
-function formatData(events: Array<Events>) {
-  return {
+function formatData(events: Array<Events>): string {
+  return JSON.stringify({
     type: TYPE,
     events,
-  };
+  });
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API#Browser_compatibility
 export function beaconSender(events: Array<Events>) {
   if (_debugMode) {
-    console.log(
-      'beaconSender is sending data: ',
-      JSON.stringify(formatData(events))
-    );
+    console.log('beaconSender is sending data: ', formatData(events));
     return;
   }
 
-  const sent = navigator.sendBeacon(
-    ENDPOINT_URL,
-    JSON.stringify(formatData(events))
-  );
+  const sent = navigator.sendBeacon(ENDPOINT_URL, formatData(events));
   if (!sent) throw new Error('Sending failed');
 }
 
@@ -33,7 +27,7 @@ export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
   if (_debugMode) {
     console.log(
       'XMLHttpSender is sending data: ',
-      JSON.stringify(formatData(events)),
+      formatData(events),
       ' with sync mode: ',
       isSync
     );
@@ -43,7 +37,7 @@ export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
   const req = new XMLHttpRequest();
   req.open('POST', ENDPOINT_URL, !isSync);
   req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  req.send(JSON.stringify(formatData(events)));
+  req.send(formatData(events));
   // req.onerror((_this, ev) => {throw ev});
 }
 
@@ -54,10 +48,7 @@ export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
  */
 export function promiseSender(events: Array<Events>): Promise<void> {
   if (_debugMode) {
-    console.log(
-      'promiseSender is sending data: ',
-      JSON.stringify(formatData(events))
-    );
+    console.log('promiseSender is sending data: ', formatData(events));
     return Promise.resolve();
   }
 
@@ -80,7 +71,7 @@ export function promiseSender(events: Array<Events>): Promise<void> {
     };
     req.open('POST', ENDPOINT_URL, true);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    req.send(JSON.stringify(formatData(events)));
+    req.send(formatData(events));
   });
 }
 
