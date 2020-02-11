@@ -1,10 +1,11 @@
 {
   "name": "@elevio/kb-events",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/elevio/kb-events"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./lib",
