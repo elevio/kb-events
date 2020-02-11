@@ -1,11 +1,11 @@
 import { getConfig, _user } from './index';
 import { memoize } from './utils';
 
-export const language: string =
+const language: string =
   // @ts-ignore userLanguage is just for IE11
   window.navigator.userLanguage || window.navigator.language;
 
-export const referrer = memoize(() => {
+const referrer = memoize(() => {
   let referrerStr = '';
   try {
     referrerStr = window.top.document.referrer;
@@ -24,13 +24,17 @@ export const referrer = memoize(() => {
   return referrerStr;
 });
 
-// TODO: iframe...
+const isIframe = memoize(() => {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+});
 
-export const timezoneOffset = new Date().getTimezoneOffset();
+const timezoneOffset = new Date().getTimezoneOffset();
 
-export const timezoneString = String(String(new Date()).split('(')[1]).split(
-  ')'
-)[0];
+const timezoneString = String(String(new Date()).split('(')[1]).split(')')[0];
 
 // This fills out the 'page' section of an event
 export function getAll() {
@@ -62,6 +66,7 @@ export function getAll() {
     page_page_offset_top: Math.max(
       window.pageYOffset || document.body.scrollTop || 0
     ),
+    page_is_iframe: isIframe(),
     page_title: window.document.title,
     page_url: getConfig().isAnonMode ? undefined : window.location.href,
     page_viewport_height: window.innerHeight,

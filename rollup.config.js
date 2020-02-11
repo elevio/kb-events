@@ -6,12 +6,7 @@ import cjsModulesTransform from '@babel/plugin-transform-modules-commonjs';
 import umdModulesTransform from '@babel/plugin-transform-modules-umd';
 import { terser as minify } from 'rollup-plugin-terser';
 
-function rollup({
-  name,
-  input = './src/index.ts',
-  outputPrefix = 'analytics',
-  extraGlobals = {},
-}) {
+function rollup({ name, input = './src/index.ts', extraGlobals = {} }) {
   const tsconfig = './tsconfig.json';
 
   const globals = {
@@ -23,7 +18,7 @@ function rollup({
   }
 
   function outputFile(format) {
-    return `./lib/${outputPrefix}-${name}.${format}.js`;
+    return `./lib/${name}.${format}.js`;
   }
 
   function onwarn(message) {
@@ -123,4 +118,4 @@ function rollup({
   ];
 }
 
-export default rollup({ name: 'kb' });
+export default rollup({ name: 'kb-events' });

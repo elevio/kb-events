@@ -3,7 +3,7 @@ console.log('Hello from typescript!!!');
 
 setup({
   companyUid: 'my-companyUID',
-  debugMode: true,
+  endpointURL: 'http://localhost:8000/events',
 });
 
 // Make sure we wait until the DOM is ready

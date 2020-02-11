@@ -18,7 +18,7 @@
 
 Ƭ **ConstructorOpts**: *object*
 
-*Defined in [batch.ts:3](https://github.com/elevio/kb-events/blob/4fe81c3/src/batch.ts#L3)*
+*Defined in [batch.ts:3](https://github.com/elevio/kb-events/blob/77e5091/src/batch.ts#L3)*
 
 #### Type declaration:
 

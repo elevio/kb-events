@@ -62,7 +62,6 @@ class Batch {
    */
   flush(isSync: boolean) {
     if (this.queue.length === 0) return;
-    // TODO: this line can crash. So it will be in a loop.
     this.handler(this.queue, isSync);
     this.queue = [];
     this.cancelTimer();

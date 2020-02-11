@@ -3,12 +3,12 @@ const express = require('express');
 const port = 8000;
 
 const app = express();
+app.use(express.json({ type: '*/*' }));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/templates');
 
-// TODO: in `fe` if dev mode point events to here...
-// This is just a stub for event tracking
 app.post('/events', (req, res) => {
+  console.log(req.body, '<<< events received');
   setTimeout(() => {
     res.sendStatus(200);
   }, 10);

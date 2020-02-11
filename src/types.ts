@@ -14,7 +14,7 @@ export interface BaseEvent {
   page_title?: string;
   page_viewport_height?: number;
   page_viewport_width?: number;
-  page_language?: string; // TODO: use TS to refine this?
+  page_language?: string;
   page_timezone_offset?: number;
   page_timezone_string?: string;
   page_url?: string;

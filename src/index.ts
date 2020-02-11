@@ -105,6 +105,7 @@ export function setUser(user: User | null) {
 
 /**
  * This is the thing that adds the event to the dispatch queue.
+ * This is non-blocking.
  */
 export function track(event: Events) {
   if (!batch) throw new Error('Please run setup.');
@@ -119,12 +120,3 @@ export function track(event: Events) {
 export function sendNow(events: Array<Events>): Promise<void> {
   return promiseSender(events);
 }
-
-// TODO: auto-track
-// export default function init(track) {
-//   events.sub('document:ready', () => {
-//     const pageeventconfig = settings.get('pageeventconfig');
-//     if (!pageeventconfig) diagnostics.error('page_view_event_unconfigured', { stack: 'none' });
-//     track(pageeventconfig.name, pageeventconfig.data);
-//   });
-// }
