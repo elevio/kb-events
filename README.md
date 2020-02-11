@@ -1,4 +1,4 @@
-# Elevio analytics
+# Elevio knowledge base events
 
 This is the code required to send knowledge base analytic events to Elevio.
 It is written in Typescript but works fine in plain Javascript.
