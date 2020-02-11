@@ -26,7 +26,7 @@
 
 Ƭ **BaseContext**: *object*
 
-*Defined in [types.ts:43](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L43)*
+*Defined in [types.ts:43](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L43)*
 
 #### Type declaration:
 
@@ -40,7 +40,7 @@ ___
 
 Ƭ **Event**: *object & [BaseEvent](../interfaces/_types_.baseevent.md)*
 
-*Defined in [types.ts:31](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L31)*
+*Defined in [types.ts:31](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L31)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 Ƭ **EventWithContext**: *[Event](_types_.md#event)‹T› & C*
 
-*Defined in [types.ts:36](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L36)*
+*Defined in [types.ts:36](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L36)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 Ƭ **EventsUnion**: *ReturnType‹A›*
 
-*Defined in [types.ts:41](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L41)*
+*Defined in [types.ts:41](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L41)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 Ƭ **FunctionType**: *function*
 
-*Defined in [types.ts:38](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L38)*
+*Defined in [types.ts:38](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L38)*
 
 #### Type declaration:
 
@@ -82,7 +82,7 @@ Name | Type |
 
 ▸ **createEvent**<**T**>(`eventName`: T): *[Event](_types_.md#event)‹T›*
 
-*Defined in [types.ts:50](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L50)*
+*Defined in [types.ts:50](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L50)*
 
 **Type parameters:**
 
@@ -98,7 +98,7 @@ Name | Type |
 
 ▸ **createEvent**<**T**, **C**>(`eventName`: T, `context`: C): *[EventWithContext](_types_.md#eventwithcontext)‹T, C›*
 
-*Defined in [types.ts:51](https://github.com/elevio/kb-events/blob/77e5091/src/types.ts#L51)*
+*Defined in [types.ts:51](https://github.com/elevio/kb-events/blob/b56fb39/src/types.ts#L51)*
 
 **Type parameters:**
 

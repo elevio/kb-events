@@ -14,7 +14,7 @@
 
 ▸ **memoize**<**A**>(`func`: A): *A*
 
-*Defined in [utils/index.ts:1](https://github.com/elevio/kb-events/blob/77e5091/src/utils/index.ts#L1)*
+*Defined in [utils/index.ts:1](https://github.com/elevio/kb-events/blob/b56fb39/src/utils/index.ts#L1)*
 
 **Type parameters:**
 

@@ -23,7 +23,7 @@
 
 Ƭ **Events**: *[EventsUnion](_types_.md#eventsunion)‹typeof pageViewIndex | typeof pageViewArticle | typeof pageViewCategory | typeof searchQuery | typeof searchClick | typeof articleFeedbackReaction›*
 
-*Defined in [events.ts:90](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L90)*
+*Defined in [events.ts:90](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L90)*
 
 ## Functions
 
@@ -31,7 +31,7 @@
 
 ▸ **articleFeedbackReaction**(`isPositive`: boolean, `articleId`: string, `articleTitle`: string): *object & [BaseEvent](../interfaces/_types_.baseevent.md) & object*
 
-*Defined in [events.ts:78](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L78)*
+*Defined in [events.ts:78](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L78)*
 
 Triggered when article feedback reaction is submited.
 
@@ -51,7 +51,7 @@ ___
 
 ▸ **pageViewArticle**(`articleId`: string, `articleTitle`: string): *object & [BaseEvent](../interfaces/_types_.baseevent.md) & object*
 
-*Defined in [events.ts:16](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L16)*
+*Defined in [events.ts:16](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L16)*
 
 Triggered when an article page is viewed in the knowledge base.
 
@@ -70,7 +70,7 @@ ___
 
 ▸ **pageViewCategory**(`categoryId`: string, `categoryTitle`: string): *object & [BaseEvent](../interfaces/_types_.baseevent.md) & object*
 
-*Defined in [events.ts:29](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L29)*
+*Defined in [events.ts:29](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L29)*
 
 Triggered when a category page is viewed in the knowledge base.
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **pageViewIndex**(): *object & [BaseEvent](../interfaces/_types_.baseevent.md)*
 
-*Defined in [events.ts:6](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L6)*
+*Defined in [events.ts:6](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L6)*
 
 Triggered when the the home page is viewed in the knowledge base.
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **searchClick**(`searchTerm`: string, `resultIndex`: number, `articleId`: string, `articleTitle`: string): *object & [BaseEvent](../interfaces/_types_.baseevent.md) & object*
 
-*Defined in [events.ts:57](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L57)*
+*Defined in [events.ts:57](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L57)*
 
 Triggered when a user clicks on a search result.
 
@@ -122,7 +122,7 @@ ___
 
 ▸ **searchQuery**(`searchTerm`: string, `numberResults`: number): *object & [BaseEvent](../interfaces/_types_.baseevent.md) & object*
 
-*Defined in [events.ts:42](https://github.com/elevio/kb-events/blob/77e5091/src/events.ts#L42)*
+*Defined in [events.ts:42](https://github.com/elevio/kb-events/blob/b56fb39/src/events.ts#L42)*
 
 Triggered when a search has been completed.
 
