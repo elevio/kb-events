@@ -1,4 +1,4 @@
-[@elevio/events](../README.md) › [Globals](../globals.md) › ["batch"](_batch_.md)
+[@elevio/kb-events](../README.md) › [Globals](../globals.md) › ["batch"](_batch_.md)
 
 # External module: "batch"
 
@@ -18,7 +18,7 @@
 
 Ƭ **ConstructorOpts**: *object*
 
-*Defined in [batch.ts:3](https://github.com/elevio/elevio-events/blob/e13b493/src/batch.ts#L3)*
+*Defined in [batch.ts:3](https://github.com/elevio/kb-events/blob/4fe81c3/src/batch.ts#L3)*
 
 #### Type declaration:
 
@@ -26,6 +26,6 @@
 
   * (`events`: Array‹[Events](_events_.md#events)›, `isSync`: boolean): *void*
 
-* **interval**? : *undefined | number*
+* **interval**: *number*
 
 * **withUnload**? : *undefined | false | true*

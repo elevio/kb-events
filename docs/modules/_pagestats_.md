@@ -1,4 +1,4 @@
-[@elevio/events](../README.md) › [Globals](../globals.md) › ["pageStats"](_pagestats_.md)
+[@elevio/kb-events](../README.md) › [Globals](../globals.md) › ["pageStats"](_pagestats_.md)
 
 # External module: "pageStats"
 
@@ -7,13 +7,13 @@
 ### Variables
 
 * [language](_pagestats_.md#const-language)
+* [referrer](_pagestats_.md#const-referrer)
 * [timezoneOffset](_pagestats_.md#const-timezoneoffset)
 * [timezoneString](_pagestats_.md#const-timezonestring)
 
 ### Functions
 
 * [getAll](_pagestats_.md#getall)
-* [referrer](_pagestats_.md#const-referrer)
 
 ## Variables
 
@@ -21,7 +21,32 @@
 
 • **language**: *string* = window.navigator.userLanguage || window.navigator.language
 
-*Defined in [pageStats.ts:3](https://github.com/elevio/elevio-events/blob/e13b493/src/pageStats.ts#L3)*
+*Defined in [pageStats.ts:4](https://github.com/elevio/kb-events/blob/4fe81c3/src/pageStats.ts#L4)*
+
+___
+
+### `Const` referrer
+
+• **referrer**: *(Anonymous function)* = memoize(() => {
+  let referrerStr = '';
+  try {
+    referrerStr = window.top.document.referrer;
+  } catch (e) {
+    if (window.parent) {
+      try {
+        referrerStr = window.parent.document.referrer;
+      } catch (e1) {
+        referrerStr = '';
+      }
+    }
+  }
+  if (referrerStr === '') {
+    referrerStr = window.document.referrer;
+  }
+  return referrerStr;
+})
+
+*Defined in [pageStats.ts:8](https://github.com/elevio/kb-events/blob/4fe81c3/src/pageStats.ts#L8)*
 
 ___
 
@@ -29,7 +54,7 @@ ___
 
 • **timezoneOffset**: *number* = new Date().getTimezoneOffset()
 
-*Defined in [pageStats.ts:26](https://github.com/elevio/elevio-events/blob/e13b493/src/pageStats.ts#L26)*
+*Defined in [pageStats.ts:29](https://github.com/elevio/kb-events/blob/4fe81c3/src/pageStats.ts#L29)*
 
 ___
 
@@ -39,7 +64,7 @@ ___
   ')'
 )[0]
 
-*Defined in [pageStats.ts:28](https://github.com/elevio/elevio-events/blob/e13b493/src/pageStats.ts#L28)*
+*Defined in [pageStats.ts:31](https://github.com/elevio/kb-events/blob/4fe81c3/src/pageStats.ts#L31)*
 
 ## Functions
 
@@ -47,11 +72,11 @@ ___
 
 ▸ **getAll**(): *object*
 
-*Defined in [pageStats.ts:33](https://github.com/elevio/elevio-events/blob/e13b493/src/pageStats.ts#L33)*
+*Defined in [pageStats.ts:36](https://github.com/elevio/kb-events/blob/4fe81c3/src/pageStats.ts#L36)*
 
 **Returns:** *object*
 
-* **customer_uid**: *string* = _company_uid
+* **customer_uid**: *string* = getConfig().companyUid
 
 * **page_document_size_height**: *number* = docHeight
 
@@ -67,7 +92,7 @@ ___
       window.pageYOffset || document.body.scrollTop || 0
     )
 
-* **page_referrer**: *undefined | string* = _isAnonMode ? undefined : referrer()
+* **page_referrer**: *undefined | string* = getConfig().isAnonMode ? undefined : referrer()
 
 * **page_timezone_offset**: *number* = timezoneOffset
 
@@ -75,7 +100,7 @@ ___
 
 * **page_title**: *string* = window.document.title
 
-* **page_url**: *undefined | string* = _isAnonMode ? undefined : window.location.href
+* **page_url**: *undefined | string* = getConfig().isAnonMode ? undefined : window.location.href
 
 * **page_viewport_height**: *number* = window.innerHeight
 
@@ -86,13 +111,3 @@ ___
 * **user_email**: *undefined | string* = _user ? _user.email : undefined
 
 * **user_uid**: *undefined | string* = _user ? _user.id : undefined
-
-___
-
-### `Const` referrer
-
-▸ **referrer**(): *string*
-
-*Defined in [pageStats.ts:7](https://github.com/elevio/elevio-events/blob/e13b493/src/pageStats.ts#L7)*
-
-**Returns:** *string*

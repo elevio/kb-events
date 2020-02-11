@@ -3,20 +3,37 @@ import * as events from './events';
 import { promiseSender, getSender } from './sender';
 import Batch from './batch';
 
+/** @hidden */
+const DEFAULT_INTERVAL = 500;
+/** @hidden */
+const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
+/** @hidden */
+const DEFAULT_ENDPOINT_URL = 'https://events.elev.io/v1/events';
+
 export { events };
 
+/** @hidden */
 let batch: Batch | null;
-export type User = {
-  id?: string;
-  email: string;
+
+/** @hidden */
+type Config = {
+  companyUid: string;
+  isAnonMode: boolean;
+  debugMode: boolean;
+  endpointURL: string;
+  eventType: string;
 };
 
-export let _company_uid: string | null = null;
-export let _isAnonMode: boolean = false;
-export let _debugMode: boolean = false;
-export let _user: User | null = null;
+/** @hidden */
+let config: Config | undefined;
 
-type Opts = {
+/** @hidden */
+export function getConfig(): Config {
+  if (!config) throw new Error('Please run setup before sending events.');
+  return config;
+}
+
+interface SetupOptions {
   /** The companyUid from Elevio */
   companyUid: string;
 
@@ -28,22 +45,55 @@ type Opts = {
 
   /** Test the events by printing them out */
   debugMode?: boolean;
-};
+
+  /** Allows you to override where the events are sent, useful for testing purposes */
+  endpointURL?: string;
+
+  /** Allows you to set a custom event type, generally not used */
+  eventType?: string;
+
+  /** @hidden */
+  isAnonMode?: boolean;
+}
 
 /**
  * Instantiates and configures the analytics sender.
  *
- * @param opts see {@link Opts}
+ * @param options see [[Opts]]
  */
-export function setup({ companyUid, interval, withUnload, debugMode }: Opts) {
-  _company_uid = companyUid;
-  _debugMode = debugMode ?? _debugMode;
+
+export function setup(options: SetupOptions) {
+  const {
+    companyUid,
+    interval = DEFAULT_INTERVAL,
+    withUnload,
+    debugMode = false,
+    endpointURL = DEFAULT_ENDPOINT_URL,
+    eventType = DEFAULT_EVENT_TYPE,
+    isAnonMode = false,
+  } = options;
+  config = {
+    companyUid,
+    debugMode,
+    endpointURL,
+    eventType,
+    isAnonMode,
+  };
+
   batch = new Batch({
     interval,
     withUnload,
     handler: getSender(),
   });
 }
+
+export interface User {
+  id?: string;
+  email: string;
+}
+
+/** @hidden */
+export let _user: User | null = null;
 
 /**
  * This will set the user
@@ -69,3 +119,12 @@ export function track(event: Events) {
 export function sendNow(events: Array<Events>): Promise<void> {
   return promiseSender(events);
 }
+
+// TODO: auto-track
+// export default function init(track) {
+//   events.sub('document:ready', () => {
+//     const pageeventconfig = settings.get('pageeventconfig');
+//     if (!pageeventconfig) diagnostics.error('page_view_event_unconfigured', { stack: 'none' });
+//     track(pageeventconfig.name, pageeventconfig.data);
+//   });
+// }

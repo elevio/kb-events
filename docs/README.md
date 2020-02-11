@@ -1,13 +1,13 @@
-[@elevio/events](README.md) › [Globals](globals.md)
+[@elevio/kb-events](README.md) › [Globals](globals.md)
 
-# @elevio/events
+# @elevio/kb-events
 
 # Elevio analytics
 
 This is the code required to send knowledge base analytic events to Elevio.
 It is written in Typescript but works fine in plain Javascript.
 
-## Instalation
+## Installation
 
 Run `npm i` to install all dependencies.
 
@@ -18,14 +18,20 @@ This puts the compiled code and typedefs in the lib dir.
 
 ## Example
 
-To see this in action there is an example.
+To see this in action there is an example. You can see the example of the usage in `example/src/index.ts`. To see it running locally, follow the below instructions:
 
-In that directory install the dependencies by running `npm i`.
+In the root directory:
 
-You can see the example of the usage in `example/src/index.ts`.
-To build that example run `npm run build` and then to startup a server to see it running run `npm run server`, then you can open a web browser at http://localhost:8000, if you open the console you will see the output of the events in the terminal.
+- Run `npm run build`
 
-If you would like to actually send some events for testing you can switch `debugMode` off in `example/src/index.ts` and also set the correct companyUid.
+In the `example` directory:
+
+- Run `npm i` to install dependencies
+- Run `npm run build` to build the example
+- Run `npm run server` to start up a server
+- Open a web browser at http://localhost:8000. If you open the console you will see the output of the events in the terminal.
+
+If you would like to actually send some events for testing you can set `debugMode` to `false` in `example/src/index.ts` and also set the correct companyUid.
 
 ## Usage
 
@@ -58,7 +64,7 @@ This returns a promise that you can wait on.
 // this may change, depending on how you install
 import { setup, sendNow, events } from 'analytics';
 
-setup({ companyUid: 'my-companyUID' });
+setup({ companyUid: 'companyUID' });
 
 document.addEventListener('DOMContentLoaded', function() {
   sendNow(events.pageViewArticle('art123', 'article title')).then(() => {
@@ -69,4 +75,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## API / Events
 
-For all the documention about all the different functions and options open `docs/index.html` in a browser.
+For all the documention about all the different functions and options see [API docs](docs/globals.md) or here [HTML docs](https://elevio.github.io/elevio-events/globals.html)

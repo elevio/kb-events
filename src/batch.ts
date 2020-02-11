@@ -1,7 +1,7 @@
 import { Events } from './events';
 
 type ConstructorOpts = {
-  interval?: number;
+  interval: number;
   withUnload?: boolean;
   handler: (events: Array<Events>, isSync: boolean) => void;
 };
@@ -24,7 +24,7 @@ class Batch {
    * NOTE: all options contain defaults.
    */
   constructor(opts: ConstructorOpts) {
-    const { interval = 500, handler, withUnload = true } = opts;
+    const { interval, handler, withUnload = true } = opts;
     this._intervalTime = interval;
     this.handler = handler;
 

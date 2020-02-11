@@ -1,30 +1,30 @@
 import { Events } from './events';
-import { _debugMode } from './index';
-
-const TYPE = 'web-kb-event-2';
-const ENDPOINT_URL = 'https://events.elev.io/v1/events';
+import { getConfig } from './index';
 
 function formatData(events: Array<Events>): string {
   return JSON.stringify({
-    type: TYPE,
+    type: getConfig().eventType,
     events,
   });
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API#Browser_compatibility
 export function beaconSender(events: Array<Events>) {
-  if (_debugMode) {
+  if (getConfig().debugMode) {
     console.log('beaconSender is sending data: ', formatData(events));
     return;
   }
 
-  const sent = navigator.sendBeacon(ENDPOINT_URL, formatData(events));
+  const sent = navigator.sendBeacon(
+    getConfig().endpointURL,
+    formatData(events)
+  );
   if (!sent) throw new Error('Sending failed');
 }
 
 // This is just used for IE11
 export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
-  if (_debugMode) {
+  if (getConfig().debugMode) {
     console.log(
       'XMLHttpSender is sending data: ',
       formatData(events),
@@ -35,7 +35,7 @@ export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
   }
 
   const req = new XMLHttpRequest();
-  req.open('POST', ENDPOINT_URL, !isSync);
+  req.open('POST', getConfig().endpointURL, !isSync);
   req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   req.send(formatData(events));
   // req.onerror((_this, ev) => {throw ev});
@@ -47,7 +47,7 @@ export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
  * @param events the array of events to send.
  */
 export function promiseSender(events: Array<Events>): Promise<void> {
-  if (_debugMode) {
+  if (getConfig().debugMode) {
     console.log('promiseSender is sending data: ', formatData(events));
     return Promise.resolve();
   }
@@ -69,7 +69,7 @@ export function promiseSender(events: Array<Events>): Promise<void> {
         });
       }
     };
-    req.open('POST', ENDPOINT_URL, true);
+    req.open('POST', getConfig().endpointURL, true);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.send(formatData(events));
   });

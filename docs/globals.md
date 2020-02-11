@@ -1,6 +1,6 @@
-[@elevio/events](README.md) › [Globals](globals.md)
+[@elevio/kb-events](README.md) › [Globals](globals.md)
 
-# @elevio/events
+# @elevio/kb-events
 
 ## Index
 
@@ -12,3 +12,4 @@
 * ["pageStats"](modules/_pagestats_.md)
 * ["sender"](modules/_sender_.md)
 * ["types"](modules/_types_.md)
+* ["utils/index"](modules/_utils_index_.md)
