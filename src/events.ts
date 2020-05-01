@@ -36,12 +36,13 @@ export function pageViewCategory(categoryId: string, categoryTitle: string) {
 /**
  * Triggered when a search has been completed.
  *
- * @param searchTerm the 'term' that has been searched for.
+ * @param searchTerm the 'term' that has been searched for. NOTE: only the first 255 characters will be submitted.
  * @param numberResults the number of results returned.
  */
 export function searchQuery(searchTerm: string, numberResults: number) {
+  const filteredTerm = searchTerm.substring(0, 255);
   return createEvent('search_query', {
-    event_ctx_queryTerm: searchTerm,
+    event_ctx_queryTerm: filteredTerm,
     event_ctx_totalResults: numberResults,
   });
 }
@@ -60,8 +61,9 @@ export function searchClick(
   articleId: string,
   articleTitle: string
 ) {
+  const filteredTerm = searchTerm.substring(0, 255);
   return createEvent('search_click', {
-    event_ctx_query: searchTerm,
+    event_ctx_query: filteredTerm,
     event_ctx_id: articleId,
     event_ctx_index: resultIndex,
     event_ctx_title: articleTitle,
