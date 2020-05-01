@@ -22,7 +22,7 @@
 
 ▸ **sendNow**(`events`: Array‹[Events](_events_.md#events)›): *Promise‹void›*
 
-*Defined in [index.ts:120](https://github.com/elevio/kb-events/blob/b56fb39/src/index.ts#L120)*
+*Defined in [index.ts:120](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L120)*
 
 This sends the events without using the batching q.
 It returns a promise so you can wait for it and will throw an error if it fails.
@@ -41,7 +41,7 @@ ___
 
 ▸ **setUser**(`user`: [User](../interfaces/_index_.user.md) | null): *void*
 
-*Defined in [index.ts:102](https://github.com/elevio/kb-events/blob/b56fb39/src/index.ts#L102)*
+*Defined in [index.ts:102](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L102)*
 
 This will set the user
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **setup**(`options`: [SetupOptions](../interfaces/_index_.setupoptions.md)): *void*
 
-*Defined in [index.ts:65](https://github.com/elevio/kb-events/blob/b56fb39/src/index.ts#L65)*
+*Defined in [index.ts:65](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L65)*
 
 Instantiates and configures the analytics sender.
 
@@ -77,7 +77,7 @@ ___
 
 ▸ **track**(`event`: [Events](_events_.md#events)): *void*
 
-*Defined in [index.ts:110](https://github.com/elevio/kb-events/blob/b56fb39/src/index.ts#L110)*
+*Defined in [index.ts:110](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L110)*
 
 This is the thing that adds the event to the dispatch queue.
 This is non-blocking.
