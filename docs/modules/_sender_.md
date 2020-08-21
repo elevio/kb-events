@@ -18,7 +18,7 @@
 
 ▸ **XMLHttpSender**(`events`: Array‹[Events](_events_.md#events)›, `isSync`: boolean): *void*
 
-*Defined in [sender.ts:26](https://github.com/elevio/kb-events/blob/11baa8d/src/sender.ts#L26)*
+*Defined in [sender.ts:26](https://github.com/elevio/kb-events/blob/abf46bc/src/sender.ts#L26)*
 
 **Parameters:**
 
@@ -35,7 +35,7 @@ ___
 
 ▸ **beaconSender**(`events`: Array‹[Events](_events_.md#events)›): *void*
 
-*Defined in [sender.ts:12](https://github.com/elevio/kb-events/blob/11baa8d/src/sender.ts#L12)*
+*Defined in [sender.ts:12](https://github.com/elevio/kb-events/blob/abf46bc/src/sender.ts#L12)*
 
 **Parameters:**
 
@@ -51,7 +51,7 @@ ___
 
 ▸ **formatData**(`events`: Array‹[Events](_events_.md#events)›): *string*
 
-*Defined in [sender.ts:4](https://github.com/elevio/kb-events/blob/11baa8d/src/sender.ts#L4)*
+*Defined in [sender.ts:4](https://github.com/elevio/kb-events/blob/abf46bc/src/sender.ts#L4)*
 
 **Parameters:**
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **getSender**(): *typeof XMLHttpSender*
 
-*Defined in [sender.ts:81](https://github.com/elevio/kb-events/blob/11baa8d/src/sender.ts#L81)*
+*Defined in [sender.ts:81](https://github.com/elevio/kb-events/blob/abf46bc/src/sender.ts#L81)*
 
 Automatically choose the best way to send events.
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **promiseSender**(`events`: Array‹[Events](_events_.md#events)›): *Promise‹void›*
 
-*Defined in [sender.ts:49](https://github.com/elevio/kb-events/blob/11baa8d/src/sender.ts#L49)*
+*Defined in [sender.ts:49](https://github.com/elevio/kb-events/blob/abf46bc/src/sender.ts#L49)*
 
 This sends the array of events to the server but returns a promise so you can
 wait to make sure they get sent correctly.
