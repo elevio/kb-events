@@ -12,6 +12,7 @@
 ### Functions
 
 * [sendNow](_index_.md#sendnow)
+* [setLanguageId](_index_.md#setlanguageid)
 * [setUser](_index_.md#setuser)
 * [setup](_index_.md#setup)
 * [track](_index_.md#track)
@@ -22,7 +23,7 @@
 
 ▸ **sendNow**(`events`: Array‹[Events](_events_.md#events)›): *Promise‹void›*
 
-*Defined in [index.ts:120](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L120)*
+*Defined in [index.ts:131](https://github.com/elevio/kb-events/blob/11baa8d/src/index.ts#L131)*
 
 This sends the events without using the batching q.
 It returns a promise so you can wait for it and will throw an error if it fails.
@@ -37,11 +38,29 @@ Name | Type | Description |
 
 ___
 
+###  setLanguageId
+
+▸ **setLanguageId**(`languageId`: string | null): *void*
+
+*Defined in [index.ts:113](https://github.com/elevio/kb-events/blob/11baa8d/src/index.ts#L113)*
+
+This will set the language id that articles + categories are currently displayed in.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`languageId` | string &#124; null |   |
+
+**Returns:** *void*
+
+___
+
 ###  setUser
 
 ▸ **setUser**(`user`: [User](../interfaces/_index_.user.md) | null): *void*
 
-*Defined in [index.ts:102](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L102)*
+*Defined in [index.ts:102](https://github.com/elevio/kb-events/blob/11baa8d/src/index.ts#L102)*
 
 This will set the user
 
@@ -59,7 +78,7 @@ ___
 
 ▸ **setup**(`options`: [SetupOptions](../interfaces/_index_.setupoptions.md)): *void*
 
-*Defined in [index.ts:65](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L65)*
+*Defined in [index.ts:65](https://github.com/elevio/kb-events/blob/11baa8d/src/index.ts#L65)*
 
 Instantiates and configures the analytics sender.
 
@@ -77,7 +96,7 @@ ___
 
 ▸ **track**(`event`: [Events](_events_.md#events)): *void*
 
-*Defined in [index.ts:110](https://github.com/elevio/kb-events/blob/ee5a9fc/src/index.ts#L110)*
+*Defined in [index.ts:121](https://github.com/elevio/kb-events/blob/11baa8d/src/index.ts#L121)*
 
 This is the thing that adds the event to the dispatch queue.
 This is non-blocking.

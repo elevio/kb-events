@@ -1,4 +1,4 @@
-import { getConfig, _user } from './index';
+import { getConfig, _user, _languageId } from './index';
 import { memoize } from './utils';
 
 const language: string =
@@ -55,6 +55,7 @@ export function getAll() {
   return {
     user_uid: _user ? _user.id : undefined,
     user_email: _user ? _user.email : undefined,
+    app_lang: _languageId,
     timestamp_created: Date.now(),
     customer_uid: getConfig().companyUid,
 

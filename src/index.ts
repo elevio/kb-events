@@ -103,6 +103,17 @@ export function setUser(user: User | null) {
   _user = user;
 }
 
+/** @hidden */
+export let _languageId: string | null = null;
+
+/**
+ * This will set the language id that articles + categories are currently displayed in.
+ * @param languageId
+ */
+export function setLanguageId(languageId: string | null) {
+  _languageId = languageId;
+}
+
 /**
  * This is the thing that adds the event to the dispatch queue.
  * This is non-blocking.
