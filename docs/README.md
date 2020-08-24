@@ -49,10 +49,36 @@ Like this:
 // this may change, depending on how you install
 import { setup, track, events } from 'analytics';
 
-setup({ companyUid: 'my-companyUID' });
+setup({ companyUid: 'my-companyUID', languageId: 'en' });
 
 document.addEventListener('DOMContentLoaded', function() {
   track(events.pageViewArticle('art123', 'article title'));
+});
+```
+
+To set the language that the user is viewing content in it can either be set with the `setLanguageId` function or passed into the `setup` function.
+
+```js
+import { setup, setLanguageId } from 'analytics';
+
+setup({ companyUid: 'my-companyUID', languageId: 'en' });
+
+// OR
+
+setup({ companyUid: 'my-companyUID' });
+// ...
+setLanguageId('en');
+```
+
+To set the details of the user that is logged in there is the `setUser` function.
+
+```js
+import { setup, setUser } from 'analytics';
+
+setup({ companyUid: 'my-companyUID', languageId: 'en' });
+setUser({
+  id: 'my-users-id',
+  email: 'users@email.com',
 });
 ```
 

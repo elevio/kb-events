@@ -9,6 +9,10 @@ const DEFAULT_INTERVAL = 500;
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
 const DEFAULT_ENDPOINT_URL = 'https://events.elev.io/v1/events';
+/** @hidden */
+export let _languageId: string | null = null;
+/** @hidden */
+export let _user: User | null = null;
 
 export { events };
 
@@ -52,6 +56,9 @@ interface SetupOptions {
   /** Allows you to set a custom event type, generally not used */
   eventType?: string;
 
+  /** See: setLanguageId, just sets the langauge the user is veiwing Elevio content in.  */
+  languageId?: string;
+
   /** @hidden */
   isAnonMode?: boolean;
 }
@@ -71,6 +78,7 @@ export function setup(options: SetupOptions) {
     endpointURL = DEFAULT_ENDPOINT_URL,
     eventType = DEFAULT_EVENT_TYPE,
     isAnonMode = false,
+    languageId,
   } = options;
   config = {
     companyUid,
@@ -85,15 +93,16 @@ export function setup(options: SetupOptions) {
     withUnload,
     handler: getSender(),
   });
+
+  if (languageId) {
+    setLanguageId(languageId);
+  }
 }
 
 export interface User {
   id?: string;
   email: string;
 }
-
-/** @hidden */
-export let _user: User | null = null;
 
 /**
  * This will set the user
@@ -103,15 +112,16 @@ export function setUser(user: User | null) {
   _user = user;
 }
 
-/** @hidden */
-export let _languageId: string | null = null;
-
 /**
  * This will set the language id that articles + categories are currently displayed in.
  * @param languageId
  */
 export function setLanguageId(languageId: string | null) {
-  _languageId = languageId;
+  if (languageId) {
+    _languageId = languageId.toLowerCase();
+  } else {
+    _languageId = null;
+  }
 }
 
 /**
