@@ -125,19 +125,46 @@ export function setLanguageId(languageId: string | null) {
 }
 
 /**
+ * Options for altering the events before they are sent.
+ * `force_timestamp` will force the timestamp to allow backfilling of events.
+ */
+type SendOptions = {
+  force_timestamp?: number;
+};
+
+function alterEvent(event: Events, opts: SendOptions): Events {
+  if (opts.force_timestamp) {
+    return {
+      ...event,
+      timestamp_created: opts.force_timestamp,
+      timestamp_server: opts.force_timestamp,
+    };
+  }
+  return event;
+}
+
+/**
  * This is the thing that adds the event to the dispatch queue.
  * This is non-blocking.
+ * @param event the event to be sent.
+ * @param opts allows you to "alter" the events before being sent
  */
-export function track(event: Events) {
+export function track(event: Events, opts?: SendOptions) {
   if (!batch) throw new Error('Please run setup.');
-  batch.addEvent(event);
+  const _event = opts ? alterEvent(event, opts) : event;
+  batch.addEvent(_event);
 }
 
 /**
  * This sends the events without using the batching q.
  * It returns a promise so you can wait for it and will throw an error if it fails.
  * @param events the array of events to send.
+ * @param opts allows you to "alter" the events before being sent
  */
-export function sendNow(events: Array<Events>): Promise<void> {
-  return promiseSender(events);
+export function sendNow(
+  events: Array<Events>,
+  opts?: SendOptions
+): Promise<void> {
+  const _events = opts ? events.map(e => alterEvent(e, opts)) : events;
+  return promiseSender(_events);
 }

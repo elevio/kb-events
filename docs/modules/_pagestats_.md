@@ -28,7 +28,7 @@
   }
 })
 
-*Defined in [pageStats.ts:27](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L27)*
+*Defined in [pageStats.ts:27](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L27)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **language**: *string* = window.navigator.userLanguage || window.navigator.language
 
-*Defined in [pageStats.ts:4](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L4)*
+*Defined in [pageStats.ts:4](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L4)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
   return referrerStr;
 })
 
-*Defined in [pageStats.ts:8](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L8)*
+*Defined in [pageStats.ts:8](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L8)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **timezoneOffset**: *number* = new Date().getTimezoneOffset()
 
-*Defined in [pageStats.ts:35](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L35)*
+*Defined in [pageStats.ts:35](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L35)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 • **timezoneString**: *string* = String(String(new Date()).split('(')[1]).split(')')[0]
 
-*Defined in [pageStats.ts:37](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L37)*
+*Defined in [pageStats.ts:37](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L37)*
 
 ## Functions
 
@@ -85,7 +85,7 @@ ___
 
 ▸ **getAll**(): *object*
 
-*Defined in [pageStats.ts:40](https://github.com/elevio/kb-events/blob/5af97fd/src/pageStats.ts#L40)*
+*Defined in [pageStats.ts:40](https://github.com/elevio/kb-events/blob/b68595e/src/pageStats.ts#L40)*
 
 **Returns:** *object*
 

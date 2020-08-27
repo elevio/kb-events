@@ -25,6 +25,7 @@
 * [page_viewport_height](_types_.baseevent.md#optional-page_viewport_height)
 * [page_viewport_width](_types_.baseevent.md#optional-page_viewport_width)
 * [timestamp_created](_types_.baseevent.md#timestamp_created)
+* [timestamp_server](_types_.baseevent.md#optional-timestamp_server)
 * [user_id_external](_types_.baseevent.md#optional-user_id_external)
 
 ## Properties
@@ -33,7 +34,7 @@
 
 • **custom_attributes**? : *object | string | number*
 
-*Defined in [types.ts:28](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L28)*
+*Defined in [types.ts:29](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L29)*
 
 ___
 
@@ -41,7 +42,7 @@ ___
 
 • **customer_uid**: *string*
 
-*Defined in [types.ts:4](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L4)*
+*Defined in [types.ts:4](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L4)*
 
 ___
 
@@ -49,7 +50,7 @@ ___
 
 • **page_document_size_height**? : *undefined | number*
 
-*Defined in [types.ts:10](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L10)*
+*Defined in [types.ts:11](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L11)*
 
 ___
 
@@ -57,7 +58,7 @@ ___
 
 • **page_document_size_width**? : *undefined | number*
 
-*Defined in [types.ts:11](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L11)*
+*Defined in [types.ts:12](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L12)*
 
 ___
 
@@ -65,7 +66,7 @@ ___
 
 • **page_language**? : *undefined | string*
 
-*Defined in [types.ts:17](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L17)*
+*Defined in [types.ts:18](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L18)*
 
 ___
 
@@ -73,7 +74,7 @@ ___
 
 • **page_page_offset_left**? : *undefined | number*
 
-*Defined in [types.ts:12](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L12)*
+*Defined in [types.ts:13](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L13)*
 
 ___
 
@@ -81,7 +82,7 @@ ___
 
 • **page_page_offset_top**? : *undefined | number*
 
-*Defined in [types.ts:13](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L13)*
+*Defined in [types.ts:14](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L14)*
 
 ___
 
@@ -89,7 +90,7 @@ ___
 
 • **page_referrer**? : *undefined | string*
 
-*Defined in [types.ts:21](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L21)*
+*Defined in [types.ts:22](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L22)*
 
 ___
 
@@ -97,7 +98,7 @@ ___
 
 • **page_timezone_offset**? : *undefined | number*
 
-*Defined in [types.ts:18](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L18)*
+*Defined in [types.ts:19](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L19)*
 
 ___
 
@@ -105,7 +106,7 @@ ___
 
 • **page_timezone_string**? : *undefined | string*
 
-*Defined in [types.ts:19](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L19)*
+*Defined in [types.ts:20](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L20)*
 
 ___
 
@@ -113,7 +114,7 @@ ___
 
 • **page_title**? : *undefined | string*
 
-*Defined in [types.ts:14](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L14)*
+*Defined in [types.ts:15](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L15)*
 
 ___
 
@@ -121,7 +122,7 @@ ___
 
 • **page_url**? : *undefined | string*
 
-*Defined in [types.ts:20](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L20)*
+*Defined in [types.ts:21](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L21)*
 
 ___
 
@@ -129,7 +130,7 @@ ___
 
 • **page_viewport_height**? : *undefined | number*
 
-*Defined in [types.ts:15](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L15)*
+*Defined in [types.ts:16](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L16)*
 
 ___
 
@@ -137,7 +138,7 @@ ___
 
 • **page_viewport_width**? : *undefined | number*
 
-*Defined in [types.ts:16](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L16)*
+*Defined in [types.ts:17](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L17)*
 
 ___
 
@@ -145,7 +146,15 @@ ___
 
 • **timestamp_created**: *number*
 
-*Defined in [types.ts:7](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L7)*
+*Defined in [types.ts:7](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L7)*
+
+___
+
+### `Optional` timestamp_server
+
+• **timestamp_server**? : *undefined | number*
+
+*Defined in [types.ts:8](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L8)*
 
 ___
 
@@ -153,4 +162,4 @@ ___
 
 • **user_id_external**? : *undefined | string*
 
-*Defined in [types.ts:25](https://github.com/elevio/kb-events/blob/5af97fd/src/types.ts#L25)*
+*Defined in [types.ts:26](https://github.com/elevio/kb-events/blob/b68595e/src/types.ts#L26)*

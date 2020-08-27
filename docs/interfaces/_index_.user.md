@@ -19,7 +19,7 @@
 
 • **email**: *string*
 
-*Defined in [index.ts:104](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L104)*
+*Defined in [index.ts:104](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L104)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **id**? : *undefined | string*
 
-*Defined in [index.ts:103](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L103)*
+*Defined in [index.ts:103](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L103)*

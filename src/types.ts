@@ -5,6 +5,7 @@ export interface BaseEvent {
   // user_uid?: string;
   // user_loggedin: boolean;
   timestamp_created: number;
+  timestamp_server?: number;
 
   // These comes from pageStats.getAll
   page_document_size_height?: number;

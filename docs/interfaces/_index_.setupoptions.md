@@ -24,7 +24,7 @@
 
 • **companyUid**: *string*
 
-*Defined in [index.ts:42](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L42)*
+*Defined in [index.ts:42](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L42)*
 
 The companyUid from Elevio
 
@@ -34,7 +34,7 @@ ___
 
 • **debugMode**? : *undefined | false | true*
 
-*Defined in [index.ts:51](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L51)*
+*Defined in [index.ts:51](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L51)*
 
 Test the events by printing them out
 
@@ -44,7 +44,7 @@ ___
 
 • **endpointURL**? : *undefined | string*
 
-*Defined in [index.ts:54](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L54)*
+*Defined in [index.ts:54](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L54)*
 
 Allows you to override where the events are sent, useful for testing purposes
 
@@ -54,7 +54,7 @@ ___
 
 • **eventType**? : *undefined | string*
 
-*Defined in [index.ts:57](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L57)*
+*Defined in [index.ts:57](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L57)*
 
 Allows you to set a custom event type, generally not used
 
@@ -64,7 +64,7 @@ ___
 
 • **interval**? : *undefined | number*
 
-*Defined in [index.ts:45](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L45)*
+*Defined in [index.ts:45](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L45)*
 
 How often to send events in ms, default to 500ms
 
@@ -74,7 +74,7 @@ ___
 
 • **languageId**? : *undefined | string*
 
-*Defined in [index.ts:60](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L60)*
+*Defined in [index.ts:60](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L60)*
 
 See: setLanguageId, just sets the langauge the user is veiwing Elevio content in.
 
@@ -84,6 +84,6 @@ ___
 
 • **withUnload**? : *undefined | false | true*
 
-*Defined in [index.ts:48](https://github.com/elevio/kb-events/blob/5af97fd/src/index.ts#L48)*
+*Defined in [index.ts:48](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L48)*
 
 Should we try to send the events before the page unloads, default to `true`
