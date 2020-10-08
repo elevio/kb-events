@@ -32,7 +32,7 @@
 
 \+ **new Batch**(`opts`: [ConstructorOpts](../modules/_batch_.md#constructoropts)): *[Batch](_batch_.batch.md)*
 
-*Defined in [batch.ts:20](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L20)*
+*Defined in [batch.ts:20](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L20)*
 
 **Parameters:**
 
@@ -48,7 +48,7 @@ Name | Type | Description |
 
 • **_intervalTime**: *number*
 
-*Defined in [batch.ts:19](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L19)*
+*Defined in [batch.ts:19](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L19)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **_timer**: *undefined | number*
 
-*Defined in [batch.ts:20](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L20)*
+*Defined in [batch.ts:20](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L20)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 • **handler**: *function*
 
-*Defined in [batch.ts:18](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L18)*
+*Defined in [batch.ts:18](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L18)*
 
 Accepts an array of events and 'handles' them.
 
@@ -85,7 +85,7 @@ ___
 
 • **queue**: *Array‹[Events](../modules/_events_.md#events)›* = []
 
-*Defined in [batch.ts:13](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L13)*
+*Defined in [batch.ts:13](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L13)*
 
 The list of events that are to be sent.
 
@@ -95,7 +95,7 @@ The list of events that are to be sent.
 
 ▸ **addEvent**(`event`: [Events](../modules/_events_.md#events)): *void*
 
-*Defined in [batch.ts:55](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L55)*
+*Defined in [batch.ts:55](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L55)*
 
 Adds an event the the queue
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **cancelTimer**(): *void*
 
-*Defined in [batch.ts:46](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L46)*
+*Defined in [batch.ts:46](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L46)*
 
 **Returns:** *void*
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **flush**(`isSync`: boolean): *void*
 
-*Defined in [batch.ts:63](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L63)*
+*Defined in [batch.ts:63](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L63)*
 
 Sends all of the current queue to the 'handler' func.
 
@@ -141,6 +141,6 @@ ___
 
 ▸ **startTimer**(): *void*
 
-*Defined in [batch.ts:36](https://github.com/elevio/kb-events/blob/b68595e/src/batch.ts#L36)*
+*Defined in [batch.ts:36](https://github.com/elevio/kb-events/blob/9fb318c/src/batch.ts#L36)*
 
 **Returns:** *void*

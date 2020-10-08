@@ -28,7 +28,7 @@
 
 Ƭ **SendOptions**: *object*
 
-*Defined in [index.ts:131](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L131)*
+*Defined in [index.ts:131](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L131)*
 
 Options for altering the events before they are sent.
 `force_timestamp` will force the timestamp to allow backfilling of events.
@@ -43,7 +43,7 @@ Options for altering the events before they are sent.
 
 ▸ **alterEvent**(`event`: [Events](_events_.md#events), `opts`: [SendOptions](_index_.md#sendoptions)): *[Events](_events_.md#events)*
 
-*Defined in [index.ts:135](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L135)*
+*Defined in [index.ts:135](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L135)*
 
 **Parameters:**
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **sendNow**(`events`: Array‹[Events](_events_.md#events)›, `opts?`: [SendOptions](_index_.md#sendoptions)): *Promise‹void›*
 
-*Defined in [index.ts:164](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L164)*
+*Defined in [index.ts:164](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L164)*
 
 This sends the events without using the batching q.
 It returns a promise so you can wait for it and will throw an error if it fails.
@@ -80,7 +80,7 @@ ___
 
 ▸ **setLanguageId**(`languageId`: string | null): *void*
 
-*Defined in [index.ts:119](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L119)*
+*Defined in [index.ts:119](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L119)*
 
 This will set the language id that articles + categories are currently displayed in.
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **setUser**(`user`: [User](../interfaces/_index_.user.md) | null): *void*
 
-*Defined in [index.ts:111](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L111)*
+*Defined in [index.ts:111](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L111)*
 
 This will set the user
 
@@ -116,7 +116,7 @@ ___
 
 ▸ **setup**(`options`: [SetupOptions](../interfaces/_index_.setupoptions.md)): *void*
 
-*Defined in [index.ts:72](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L72)*
+*Defined in [index.ts:72](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L72)*
 
 Instantiates and configures the analytics sender.
 
@@ -134,7 +134,7 @@ ___
 
 ▸ **track**(`event`: [Events](_events_.md#events), `opts?`: [SendOptions](_index_.md#sendoptions)): *void*
 
-*Defined in [index.ts:152](https://github.com/elevio/kb-events/blob/b68595e/src/index.ts#L152)*
+*Defined in [index.ts:152](https://github.com/elevio/kb-events/blob/9fb318c/src/index.ts#L152)*
 
 This is the thing that adds the event to the dispatch queue.
 This is non-blocking.

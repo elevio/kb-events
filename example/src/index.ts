@@ -2,8 +2,9 @@ import { setup, track, events, sendNow } from '../../lib/index';
 console.log('Hello from typescript!!!');
 
 setup({
-  companyUid: 'my-companyUID',
-  endpointURL: 'http://localhost:8000/events',
+  companyUid: 'konami',
+  // endpointURL: 'http://localhost:8000/events',
+  endpointURL: 'https://events.elevio-staging.com/v1/events',
 });
 
 // Make sure we wait until the DOM is ready
@@ -13,7 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
   track(events.pageViewArticle('art123', 'article title'));
 
   document.getElementById('positive')!.onclick = () => {
-    track(events.articleFeedbackReaction(true, 'art_123', 'my title'));
+    track(
+      events.articleFeedbackReaction(true, 'art_123', 'my title')
+      // {
+      //   force_timestamp: 1698510912962,
+      // }
+    );
   };
 
   document.getElementById('negative')!.onclick = () => {

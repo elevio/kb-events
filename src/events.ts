@@ -38,12 +38,18 @@ export function pageViewCategory(categoryId: string, categoryTitle: string) {
  *
  * @param searchTerm the 'term' that has been searched for. NOTE: only the first 255 characters will be submitted.
  * @param numberResults the number of results returned.
+ * @param articleIds the array of articles returned by the search query.
  */
-export function searchQuery(searchTerm: string, numberResults: number) {
+export function searchQuery(
+  searchTerm: string,
+  numberResults: number,
+  articleIds: Array<string>
+) {
   const filteredTerm = searchTerm.substring(0, 255);
   return createEvent('search_query', {
     event_ctx_queryTerm: filteredTerm,
     event_ctx_totalResults: numberResults,
+    event_ctx_articleIds: articleIds,
   });
 }
 
