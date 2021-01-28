@@ -1,7 +1,11 @@
 export function memoize<A extends () => any>(func: A): A {
   let result: ReturnType<A>;
+  let hasCalled = false;
   return (() => {
-    if (!result) result = func();
+    if (!hasCalled) {
+      hasCalled = true;
+      result = func();
+    }
     return result;
   }) as A;
 }

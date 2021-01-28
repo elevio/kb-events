@@ -29,8 +29,10 @@ class Batch {
     this.handler = handler;
 
     // This is we watch for the window unload event.
-    if (withUnload)
+    if (withUnload) {
+      document.addEventListener('visibilitychange', () => this.flush(true));
       window.addEventListener('unload', () => this.flush(true), false);
+    }
   }
 
   startTimer() {

@@ -6,6 +6,18 @@ module.exports = {
     '<rootDir>/src/**/*.spec.+(js|ts|tsx)',
     '<rootDir>/src/**/*.test.+(js|ts|tsx)',
   ],
+  roots: ['<rootDir>/src'],
+  coverageProvider: 'v8',
+  collectCoverage: true,
+  coverageThreshold: {
+    global: {
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50,
+    },
+  },
+  collectCoverageFrom: ['src/**/*.ts'],
   watchPathIgnorePatterns: ['/node_modules/'],
   moduleFileExtensions: ['js', 'ts', 'tsx'],
   transform: {
@@ -16,4 +28,5 @@ module.exports = {
       tsconfig: './tsconfig.json',
     },
   },
+  setupFilesAfterEnv: ['./jest.setup.ts'],
 };

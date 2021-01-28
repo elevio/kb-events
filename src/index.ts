@@ -4,7 +4,7 @@ import { promiseSender, getSender } from './sender';
 import Batch from './batch';
 
 /** @hidden */
-const DEFAULT_INTERVAL = 500;
+const DEFAULT_INTERVAL = 50;
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
@@ -165,6 +165,6 @@ export function sendNow(
   events: Array<Events>,
   opts?: SendOptions
 ): Promise<void> {
-  const _events = opts ? events.map(e => alterEvent(e, opts)) : events;
+  const _events = opts ? events.map((e) => alterEvent(e, opts)) : events;
   return promiseSender(_events);
 }

@@ -1,13 +1,14 @@
 import { Events } from './events';
 import { getConfig } from './index';
 
-function formatData(events: Array<Events>): string {
+export function formatData(events: Array<Events>): string {
   return JSON.stringify({
     type: getConfig().eventType,
     events,
   });
 }
 
+// TODO: only use beacon in the unload...
 // https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API#Browser_compatibility
 export function beaconSender(events: Array<Events>) {
   if (getConfig().debugMode) {
