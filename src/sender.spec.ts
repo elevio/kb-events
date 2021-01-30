@@ -27,7 +27,7 @@ describe('Sender', () => {
     expect(promiseSender(events)).resolves.toBe(undefined);
   });
 
-  xit('promiseSender rejects promise on send failure', () => {
+  it('promiseSender rejects promise on send failure', () => {
     server.use(
       rest.post('https://events.elev.io/v1/events', (_req, res, ctx) => {
         return res(ctx.status(500, 'Sorry there has been an issue'));

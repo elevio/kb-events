@@ -8,7 +8,8 @@ export function formatData(events: Array<Events>): string {
   });
 }
 
-// TODO: only use beacon in the unload...
+// only use beacon in the unload / visibilitychange
+// https://www.igvita.com/2015/11/20/dont-lose-user-and-app-state-use-page-visibility/
 // https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API#Browser_compatibility
 export function beaconSender(events: Array<Events>) {
   if (getConfig().debugMode) {
@@ -23,33 +24,22 @@ export function beaconSender(events: Array<Events>) {
   if (!sent) throw new Error('Sending failed');
 }
 
-// This is just used for IE11
-export function XMLHttpSender(events: Array<Events>, isSync: boolean) {
-  if (getConfig().debugMode) {
-    console.log(
-      'XMLHttpSender is sending data: ',
-      formatData(events),
-      ' with sync mode: ',
-      isSync
-    );
-    return;
-  }
-
-  const req = new XMLHttpRequest();
-  req.open('POST', getConfig().endpointURL, !isSync);
-  req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  req.send(formatData(events));
-  // req.onerror((_this, ev) => {throw ev});
-}
-
 /**
  * This sends the array of events to the server but returns a promise so you can
  * wait to make sure they get sent correctly.
  * @param events the array of events to send.
  */
-export function promiseSender(events: Array<Events>): Promise<void> {
+export function promiseSender(
+  events: Array<Events>,
+  isSync: boolean = false
+): Promise<void> {
   if (getConfig().debugMode) {
-    console.log('promiseSender is sending data: ', formatData(events));
+    console.log(
+      'promiseSender is sending data: ',
+      formatData(events),
+      ' with sync mode: ',
+      isSync
+    );
     return Promise.resolve();
   }
 
@@ -60,25 +50,25 @@ export function promiseSender(events: Array<Events>): Promise<void> {
       // Only run if the req is complete
       if (req.readyState !== 4) return;
 
+      console.log(req.responseText, req.status, '<<<<<<<<<<< STATUS');
+
       // Process the response
       if (req.status >= 200 && req.status < 300) {
         resolve();
       } else {
-        reject({
-          status: req.status,
-          statusText: req.statusText,
-        });
+        reject(req);
       }
     };
-    req.open('POST', getConfig().endpointURL, true);
+    req.open('POST', getConfig().endpointURL, !isSync);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.send(formatData(events));
-  });
-}
 
-/**
- * Automatically choose the best way to send events.
- */
-export function getSender(): typeof XMLHttpSender {
-  return !!navigator.sendBeacon ? beaconSender : XMLHttpSender;
+    // TODO: read about best way to catch error
+    req.onerror = () => {
+      console.log('ON ERROR');
+    };
+    req.onabort = () => {
+      console.log('ON ABORT');
+    };
+  });
 }

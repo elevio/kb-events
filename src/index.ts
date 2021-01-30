@@ -1,10 +1,8 @@
 import { Events } from './events';
 import * as events from './events';
-import { promiseSender, getSender } from './sender';
+import { promiseSender } from './sender';
 import Batch from './batch';
 
-/** @hidden */
-const DEFAULT_INTERVAL = 50;
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
@@ -41,8 +39,13 @@ interface SetupOptions {
   /** The companyUid from Elevio */
   companyUid: string;
 
-  /** How often to send events in ms, default to 500ms */
+  /** How often to send events in ms, default to 50ms */
   interval?: number;
+
+  /** For failed network sends, how many times should it be retried */
+  maxRetries?: number;
+
+  onError?: (err: Error) => void;
 
   /** Should we try to send the events before the page unloads, default to `true` */
   withUnload?: boolean;
@@ -72,14 +75,17 @@ interface SetupOptions {
 export function setup(options: SetupOptions) {
   const {
     companyUid,
-    interval = DEFAULT_INTERVAL,
+    interval,
     withUnload,
     debugMode = false,
     endpointURL = DEFAULT_ENDPOINT_URL,
     eventType = DEFAULT_EVENT_TYPE,
     isAnonMode = false,
     languageId,
+    onError,
+    maxRetries,
   } = options;
+
   config = {
     companyUid,
     debugMode,
@@ -91,7 +97,8 @@ export function setup(options: SetupOptions) {
   batch = new Batch({
     interval,
     withUnload,
-    handler: getSender(),
+    maxRetries,
+    onError,
   });
 
   if (languageId) {
