@@ -48,7 +48,12 @@ import { setup, track, events } from '@elevio/kb-events';
 setup({ companyUid: 'my-companyUID', languageId: 'en' });
 
 document.addEventListener('DOMContentLoaded', function () {
-  track(events.pageViewArticle('art123', 'article title'));
+  track(
+    events.pageViewArticle({
+      articleId: 'art123',
+      articleTitle: 'article title',
+    })
+  );
 });
 ```
 

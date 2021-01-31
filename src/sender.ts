@@ -1,5 +1,5 @@
 import { Events } from './events';
-import { getConfig } from './index';
+import { getConfig } from './config';
 
 export function formatData(events: Array<Events>): string {
   return JSON.stringify({
@@ -65,6 +65,8 @@ export function promiseSender(
     req.onerror = () => {
       // console.log('ON ERROR');
     };
+
+    // TODO: check this should throw
     req.onabort = () => {
       // console.log('ON ABORT');
     };

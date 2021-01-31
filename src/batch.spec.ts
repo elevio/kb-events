@@ -1,7 +1,7 @@
 import Batch from './batch';
 import * as events from './events';
 import { setup } from './index';
-import { server, rest } from '../testServer';
+import { server, rest } from './testServer';
 
 describe('Batch', () => {
   beforeEach(() => {

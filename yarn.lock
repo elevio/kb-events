@@ -2632,17 +2632,12 @@
   dependencies:
     "p-locate" "^4.1.0"
 
-"lodash.memoize@4.x":
-  "integrity" "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4="
-  "resolved" "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
-  "version" "4.1.2"
-
 "lodash.sortby@^4.7.0":
   "integrity" "sha1-7dFMgk4sycHgsKG0K7UhBRakJDg="
   "resolved" "https://registry.npmjs.org/lodash.sortby/-/lodash.sortby-4.7.0.tgz"
   "version" "4.7.0"
 
-"lodash@^4.17.19", "lodash@^4.17.20":
+"lodash@^4.17.19", "lodash@^4.17.20", "lodash@4.x":
   "integrity" "sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.20.tgz"
   "version" "4.17.20"
@@ -2698,9 +2693,9 @@
     "object-visit" "^1.0.0"
 
 "marked@^1.2.5":
-  "integrity" "sha512-No11hFYcXr/zkBvL6qFmAp1z6BKY3zqLMHny/JN/ey+al7qwCM2+CMBL9BOgqMxZU36fz4cCWfn2poWIf7QRXA=="
-  "resolved" "https://registry.npmjs.org/marked/-/marked-1.2.7.tgz"
-  "version" "1.2.7"
+  "integrity" "sha512-lzmFjGnzWHkmbk85q/ILZjFoHHJIQGF+SxGEfIdGk/XhiTPhqGs37gbru6Kkd48diJnEyYwnG67nru0Z2gQtuQ=="
+  "resolved" "https://registry.npmjs.org/marked/-/marked-1.2.8.tgz"
+  "version" "1.2.8"
 
 "merge-stream@^2.0.0":
   "integrity" "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="
@@ -3340,10 +3335,10 @@
     "resolve" "1.17.0"
     "tslib" "2.0.1"
 
-"rollup@^1.20.0||^2.0.0", "rollup@^2.0.0", "rollup@^2.38.1", "rollup@>=1.26.3":
-  "integrity" "sha512-q07T6vU/V1kqM8rGRRyCgEvIQcIAXoKIE5CpkYAlHhfiWM1Iuh4dIPWpIbqFngCK6lwAB2aYHiUVhIbSWHQWhw=="
-  "resolved" "https://registry.npmjs.org/rollup/-/rollup-2.38.1.tgz"
-  "version" "2.38.1"
+"rollup@^1.20.0||^2.0.0", "rollup@^2.0.0", "rollup@^2.38.2", "rollup@>=1.26.3":
+  "integrity" "sha512-3Sg65zfgqsnI2LUFsOmhJDvTWXwio+taySq/dsyvel8+GW+AxeW9V6YZG8BpVGQk/TS4uvGLARRH5T3ygDyyNQ=="
+  "resolved" "https://registry.npmjs.org/rollup/-/rollup-2.38.2.tgz"
+  "version" "2.38.2"
   dependencies:
     "fsevents" "~2.1.2"
   optionalDependencies:
@@ -3867,10 +3862,10 @@
   dependencies:
     "punycode" "^2.1.1"
 
-"ts-jest@^26.4.4":
-  "integrity" "sha512-3lFWKbLxJm34QxyVNNCgXX1u4o/RV0myvA2y2Bxm46iGIjKlaY0own9gIckbjZJPn+WaJEnfPPJ20HHGpoq4yg=="
-  "resolved" "https://registry.npmjs.org/ts-jest/-/ts-jest-26.4.4.tgz"
-  "version" "26.4.4"
+"ts-jest@^26.5.0":
+  "integrity" "sha512-Ya4IQgvIFNa2Mgq52KaO8yBw2W8tWp61Ecl66VjF0f5JaV8u50nGoptHVILOPGoI7SDnShmEqnYQEmyHdQ+56g=="
+  "resolved" "https://registry.npmjs.org/ts-jest/-/ts-jest-26.5.0.tgz"
+  "version" "26.5.0"
   dependencies:
     "@types/jest" "26.x"
     "bs-logger" "0.x"
@@ -3878,7 +3873,7 @@
     "fast-json-stable-stringify" "2.x"
     "jest-util" "^26.1.0"
     "json5" "2.x"
-    "lodash.memoize" "4.x"
+    "lodash" "4.x"
     "make-error" "1.x"
     "mkdirp" "1.x"
     "semver" "7.x"

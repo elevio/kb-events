@@ -2,38 +2,23 @@ import { Events } from './events';
 import * as events from './events';
 import { promiseSender } from './sender';
 import Batch from './batch';
+import {
+  setConfig,
+  User,
+  setLanguageId as _setLanguageId,
+  setUser as _setUser,
+} from './config';
+import { CustomAttributes } from './types';
 
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
 const DEFAULT_ENDPOINT_URL = 'https://events.elev.io/v1/events';
-/** @hidden */
-export let _languageId: string | null = null;
-/** @hidden */
-export let _user: User | null = null;
 
 export { events };
 
 /** @hidden */
 let batch: Batch | null;
-
-/** @hidden */
-type Config = {
-  companyUid: string;
-  isAnonMode: boolean;
-  debugMode: boolean;
-  endpointURL: string;
-  eventType: string;
-};
-
-/** @hidden */
-let config: Config | undefined;
-
-/** @hidden */
-export function getConfig(): Config {
-  if (!config) throw new Error('Please run setup before sending events.');
-  return config;
-}
 
 interface SetupOptions {
   /** The companyUid from Elevio */
@@ -86,13 +71,13 @@ export function setup(options: SetupOptions) {
     maxRetries,
   } = options;
 
-  config = {
+  setConfig({
     companyUid,
     debugMode,
     endpointURL,
     eventType,
     isAnonMode,
-  };
+  });
 
   batch = new Batch({
     interval,
@@ -106,17 +91,12 @@ export function setup(options: SetupOptions) {
   }
 }
 
-export interface User {
-  id?: string;
-  email: string;
-}
-
 /**
  * This will set the user
  * @param user
  */
 export function setUser(user: User | null) {
-  _user = user;
+  _setUser(user);
 }
 
 /**
@@ -124,27 +104,26 @@ export function setUser(user: User | null) {
  * @param languageId
  */
 export function setLanguageId(languageId: string | null) {
-  if (languageId) {
-    _languageId = languageId.toLowerCase();
-  } else {
-    _languageId = null;
-  }
+  _setLanguageId(languageId);
 }
 
 /**
  * Options for altering the events before they are sent.
- * `force_timestamp` will force the timestamp to allow backfilling of events.
+ * `forceTimestamp` will force the timestamp to allow backfilling of events.
+ * `customAttributes` allows you to pass custom event data, for your own debugging purposes.
  */
 type SendOptions = {
-  force_timestamp?: number;
+  forceTimestamp?: number;
+  customAttributes?: CustomAttributes;
 };
 
 function alterEvent(event: Events, opts: SendOptions): Events {
-  if (opts.force_timestamp) {
+  if (opts.forceTimestamp) {
     return {
       ...event,
-      timestamp_created: opts.force_timestamp,
-      timestamp_server: opts.force_timestamp,
+      timestamp_created: opts.forceTimestamp,
+      timestamp_server: opts.forceTimestamp,
+      custom_attributes: opts.customAttributes,
     };
   }
   return event;

@@ -6,7 +6,7 @@
     "importHelpers": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -19,12 +19,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "rootDir": "./src",
     "downlevelIteration": true,
     "outDir": "./lib",
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*", "./types/*", "testServer.ts"],
+  "include": ["./src/**/*", "./types/*", "src/testServer.ts"],
   "exclude": ["./src/**/*.spec.tsx?", "node_modules"]
 }

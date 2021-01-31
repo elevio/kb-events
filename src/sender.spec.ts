@@ -1,7 +1,7 @@
 import { formatData, promiseSender } from './sender';
 import { setup } from './index';
 import { Events, pageViewIndex, pageViewArticle } from './events';
-import { server, rest } from '../testServer';
+import { server, rest } from './testServer';
 
 let events: Array<Events>;
 
@@ -10,7 +10,10 @@ describe('Sender', () => {
     setup({
       companyUid: 'company_456',
     });
-    events = [pageViewIndex(), pageViewArticle('art123', 'article title')];
+    events = [
+      pageViewIndex(),
+      pageViewArticle({ articleId: 'art123', articleTitle: 'article title' }),
+    ];
   });
 
   it('formatData correctly formats event payload', () => {

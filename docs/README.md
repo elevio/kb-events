@@ -1,6 +1,4 @@
-[@elevio/kb-events](README.md) › [Globals](globals.md)
-
-# @elevio/kb-events
+@elevio/kb-events / [Exports](modules.md)
 
 # Elevio knowledge base events
 
@@ -47,19 +45,24 @@ Like this:
 
 ```js
 // this may change, depending on how you install
-import { setup, track, events } from 'analytics';
+import { setup, track, events } from '@elevio/kb-events';
 
 setup({ companyUid: 'my-companyUID', languageId: 'en' });
 
-document.addEventListener('DOMContentLoaded', function() {
-  track(events.pageViewArticle('art123', 'article title'));
+document.addEventListener('DOMContentLoaded', function () {
+  track(
+    events.pageViewArticle({
+      articleId: 'art123',
+      articleTitle: 'article title',
+    })
+  );
 });
 ```
 
 To set the language that the user is viewing content in it can either be set with the `setLanguageId` function or passed into the `setup` function.
 
 ```js
-import { setup, setLanguageId } from 'analytics';
+import { setup, setLanguageId } from '@elevio/kb-events';
 
 setup({ companyUid: 'my-companyUID', languageId: 'en' });
 
@@ -73,7 +76,7 @@ setLanguageId('en');
 To set the details of the user that is logged in there is the `setUser` function.
 
 ```js
-import { setup, setUser } from 'analytics';
+import { setup, setUser } from '@elevio/kb-events';
 
 setup({ companyUid: 'my-companyUID', languageId: 'en' });
 setUser({
@@ -88,11 +91,11 @@ This returns a promise that you can wait on.
 
 ```js
 // this may change, depending on how you install
-import { setup, sendNow, events } from 'analytics';
+import { setup, sendNow, events } from '@elevio/kb-events';
 
 setup({ companyUid: 'companyUID' });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   sendNow(events.pageViewArticle('art123', 'article title')).then(() => {
     console.log('Event successfully sent!');
   });

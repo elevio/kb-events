@@ -90,20 +90,4 @@ describe('events', () => {
       event_ctx_reaction: 1,
     });
   });
-
-  it('Addes customAttributes', () => {
-    const e = articleFeedbackReaction(
-      {
-        isPositive: true,
-        articleId: 'art456',
-        articleTitle: 'my article title',
-      },
-      { myCustomThing: 'elmo' }
-    );
-    expect(e).toMatchObject({
-      custom_attributes: {
-        myCustomThing: 'elmo',
-      },
-    });
-  });
 });

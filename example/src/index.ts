@@ -8,22 +8,40 @@ setup({
 });
 
 // Make sure we wait until the DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM IS READY');
 
-  track(events.pageViewArticle('art123', 'article title'));
+  track(
+    events.pageViewArticle({
+      articleId: 'art123',
+      articleTitle: 'article title',
+    })
+  );
 
   document.getElementById('positive')!.onclick = () => {
     track(
-      events.articleFeedbackReaction(true, 'art_123', 'my title')
-      // {
-      //   force_timestamp: 1698510912962,
-      // }
+      events.articleFeedbackReaction({
+        isPositive: true,
+        articleId: 'art_123',
+        articleTitle: 'my title',
+      }),
+      {
+        forceTimestamp: 1698510912962,
+        customAttributes: {
+          black: 'cat',
+        },
+      }
     );
   };
 
   document.getElementById('negative')!.onclick = () => {
-    track(events.articleFeedbackReaction(false, 'art_123', 'my title'));
+    track(
+      events.articleFeedbackReaction({
+        isPositive: false,
+        articleId: 'art_123',
+        articleTitle: 'my title',
+      })
+    );
   };
 
   document.getElementById('sync')!.onclick = () => {
@@ -31,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(() => {
         console.log('event confirmed sent');
       })
-      .catch(e => {
+      .catch((e) => {
         console.log('issue sending event', e);
       });
   };
