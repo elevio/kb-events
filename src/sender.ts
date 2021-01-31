@@ -50,8 +50,6 @@ export function promiseSender(
       // Only run if the req is complete
       if (req.readyState !== 4) return;
 
-      console.log(req.responseText, req.status, '<<<<<<<<<<< STATUS');
-
       // Process the response
       if (req.status >= 200 && req.status < 300) {
         resolve();
@@ -65,10 +63,10 @@ export function promiseSender(
 
     // TODO: read about best way to catch error
     req.onerror = () => {
-      console.log('ON ERROR');
+      // console.log('ON ERROR');
     };
     req.onabort = () => {
-      console.log('ON ABORT');
+      // console.log('ON ABORT');
     };
   });
 }

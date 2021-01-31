@@ -81,14 +81,12 @@ class Batch {
     const events = this.queue;
     this.queue = [];
 
-    console.log('INSIDE FLUSH!!!!!!!!!!!');
     try {
       await asyncRetry(promiseSender, [events, false], {
         maxRetrys: this._maxRetries,
         delay: this._intervalTime,
       });
     } catch (error) {
-      console.log(error, this._onError, '<<<<<<<<<<<<<XXXXXX');
       this._onError && this._onError(error);
     }
   }

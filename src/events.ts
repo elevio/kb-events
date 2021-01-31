@@ -1,10 +1,10 @@
-import { createEvent, EventsUnion } from './types';
+import { createEvent, EventsUnion, CustomAttributes } from './types';
 
 /**
  * Triggered when the the home page is viewed in the knowledge base.
  */
-export function pageViewIndex() {
-  return createEvent('page_view_index');
+export function pageViewIndex(customAttributes?: CustomAttributes) {
+  return createEvent('page_view_index', {}, customAttributes);
 }
 
 /**
@@ -13,11 +13,21 @@ export function pageViewIndex() {
  * @param articleId id of the article being viewed.
  * @param articleTitle title of the article being viewed.
  */
-export function pageViewArticle(articleId: string, articleTitle: string) {
-  return createEvent('page_view_article', {
-    event_ctx_id: articleId,
-    event_ctx_title: articleTitle,
-  });
+export function pageViewArticle(
+  data: {
+    articleId: string;
+    articleTitle: string;
+  },
+  customAttributes?: CustomAttributes
+) {
+  return createEvent(
+    'page_view_article',
+    {
+      event_ctx_id: data.articleId,
+      event_ctx_title: data.articleTitle,
+    },
+    customAttributes
+  );
 }
 
 /**
@@ -26,11 +36,18 @@ export function pageViewArticle(articleId: string, articleTitle: string) {
  * @param categoryId id of the category being viewed.
  * @param categoryTitle title of the category being viewed.
  */
-export function pageViewCategory(categoryId: string, categoryTitle: string) {
-  return createEvent('page_view_category', {
-    event_ctx_categoryId: categoryId,
-    event_ctx_title: categoryTitle,
-  });
+export function pageViewCategory(
+  data: { categoryId: string; categoryTitle: string },
+  customAttributes?: CustomAttributes
+) {
+  return createEvent(
+    'page_view_category',
+    {
+      event_ctx_categoryId: data.categoryId,
+      event_ctx_title: data.categoryTitle,
+    },
+    customAttributes
+  );
 }
 
 /**
@@ -41,16 +58,23 @@ export function pageViewCategory(categoryId: string, categoryTitle: string) {
  * @param articleIds the array of articles returned by the search query.
  */
 export function searchQuery(
-  searchTerm: string,
-  numberResults: number,
-  articleIds: Array<string>
+  data: {
+    searchTerm: string;
+    numberResults: number;
+    articleIds: Array<string>;
+  },
+  customAttributes?: CustomAttributes
 ) {
-  const filteredTerm = searchTerm.substring(0, 255);
-  return createEvent('search_query', {
-    event_ctx_queryTerm: filteredTerm,
-    event_ctx_totalResults: numberResults,
-    event_ctx_articleIds: articleIds,
-  });
+  const filteredTerm = data.searchTerm.substring(0, 255);
+  return createEvent(
+    'search_query',
+    {
+      event_ctx_queryTerm: filteredTerm,
+      event_ctx_totalResults: data.numberResults,
+      event_ctx_articleIds: data.articleIds,
+    },
+    customAttributes
+  );
 }
 
 /**
@@ -62,18 +86,25 @@ export function searchQuery(
  * @param articleTitle the title of the article relating to the search result.
  */
 export function searchClick(
-  searchTerm: string,
-  resultIndex: number,
-  articleId: string,
-  articleTitle: string
+  data: {
+    searchTerm: string;
+    resultIndex: number;
+    articleId: string;
+    articleTitle: string;
+  },
+  customAttributes?: CustomAttributes
 ) {
-  const filteredTerm = searchTerm.substring(0, 255);
-  return createEvent('search_click', {
-    event_ctx_query: filteredTerm,
-    event_ctx_id: articleId,
-    event_ctx_index: resultIndex,
-    event_ctx_title: articleTitle,
-  });
+  const filteredTerm = data.searchTerm.substring(0, 255);
+  return createEvent(
+    'search_click',
+    {
+      event_ctx_query: filteredTerm,
+      event_ctx_id: data.articleId,
+      event_ctx_index: data.resultIndex,
+      event_ctx_title: data.articleTitle,
+    },
+    customAttributes
+  );
 }
 
 /**
@@ -84,15 +115,22 @@ export function searchClick(
  * @param articleTitle the title of the article relating to the feedback.
  */
 export function articleFeedbackReaction(
-  isPositive: boolean,
-  articleId: string,
-  articleTitle: string
+  data: {
+    isPositive: boolean;
+    articleId: string;
+    articleTitle: string;
+  },
+  customAttributes?: CustomAttributes
 ) {
-  return createEvent('article_feedback_reaction', {
-    event_ctx_id: articleId,
-    event_ctx_reaction: isPositive ? 1 : 0, // 1 is positive, 0 is negative.
-    event_ctx_title: articleTitle,
-  });
+  return createEvent(
+    'article_feedback_reaction',
+    {
+      event_ctx_id: data.articleId,
+      event_ctx_reaction: data.isPositive ? 1 : 0, // 1 is positive, 0 is negative.
+      event_ctx_title: data.articleTitle,
+    },
+    customAttributes
+  );
 }
 
 export type Events = EventsUnion<
