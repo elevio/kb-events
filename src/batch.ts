@@ -95,6 +95,8 @@ class Batch {
    * When the page is unmounting fire off all events as fast as possible, if XHR use sync mode.
    */
   onUnload() {
+    if (this.queue.length === 0) return;
+
     if (!!navigator.sendBeacon) {
       beaconSender(this.queue);
     } else {
