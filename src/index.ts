@@ -1,4 +1,4 @@
-import { Events } from './events';
+import { Events, SendOptions } from './events';
 import * as events from './events';
 import { promiseSender } from './sender';
 import Batch from './batch';
@@ -8,7 +8,7 @@ import {
   setLanguageId as _setLanguageId,
   setUser as _setUser,
 } from './config';
-import { CustomAttributes } from './types';
+
 
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
@@ -108,28 +108,6 @@ export function setLanguageId(languageId: string | null) {
 }
 
 /**
- * Options for altering the events before they are sent.
- * `forceTimestamp` will force the timestamp to allow backfilling of events.
- * `customAttributes` allows you to pass custom event data, for your own debugging purposes.
- */
-type SendOptions = {
-  forceTimestamp?: number;
-  customAttributes?: CustomAttributes;
-};
-
-function alterEvent(event: Events, opts: SendOptions): Events {
-  if (opts.forceTimestamp) {
-    return {
-      ...event,
-      timestamp_created: opts.forceTimestamp,
-      timestamp_server: opts.forceTimestamp,
-      custom_attributes: opts.customAttributes,
-    };
-  }
-  return event;
-}
-
-/**
  * This is the thing that adds the event to the dispatch queue.
  * This is non-blocking.
  * @param event the event to be sent.
@@ -137,7 +115,7 @@ function alterEvent(event: Events, opts: SendOptions): Events {
  */
 export function track(event: Events, opts?: SendOptions) {
   if (!batch) throw new Error('Please run setup.');
-  const _event = opts ? alterEvent(event, opts) : event;
+  const _event = opts ? events.alterEvent(event, opts) : event;
   batch.addEvent(_event);
 }
 
@@ -148,9 +126,9 @@ export function track(event: Events, opts?: SendOptions) {
  * @param opts allows you to "alter" the events before being sent
  */
 export function sendNow(
-  events: Array<Events>,
+  eventArray: Array<Events>,
   opts?: SendOptions
 ): Promise<void> {
-  const _events = opts ? events.map((e) => alterEvent(e, opts)) : events;
+  const _events = opts ? eventArray.map((e) => events.alterEvent(e, opts)) : eventArray;
   return promiseSender(_events);
 }

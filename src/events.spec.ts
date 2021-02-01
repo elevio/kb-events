@@ -6,6 +6,7 @@ import {
   searchQuery,
   searchClick,
   articleFeedbackReaction,
+  alterEvent,
 } from './events';
 
 describe('events', () => {
@@ -88,6 +89,61 @@ describe('events', () => {
       event_ctx_id: 'art456',
       event_ctx_title: 'my article title',
       event_ctx_reaction: 1,
+    });
+  });
+});
+
+describe('alterEvent', () => {
+  beforeEach(() => {
+    setup({
+      companyUid: 'company_123',
+    });
+  });
+
+  it('overrides client and server timestamps when forceTimestamp is specified', () => {
+    const e = pageViewArticle({
+      articleId: 'article123',
+      articleTitle: 'article title',
+    });
+    const alteredEvent = alterEvent(e, { forceTimestamp: 1234 });
+    expect(alteredEvent).toMatchObject({
+      timestamp_created: 1234,
+      timestamp_server: 1234
+    });
+  });
+
+  it('adds custom attributes when specified', () => {
+    const e = pageViewArticle({
+      articleId: 'article123',
+      articleTitle: 'article title',
+    });
+    const alteredEvent = alterEvent(e, { customAttributes: { correlationId: "1234" } });
+    expect(alteredEvent).toMatchObject({ custom_attributes: { correlationId: "1234" } });
+  });
+
+  it('does all of the above when all optional parameters are specified', () => {
+    const e = pageViewArticle({
+      articleId: 'article123',
+      articleTitle: 'article title',
+    });
+    const alteredEvent = alterEvent(e, { forceTimestamp: 1234, customAttributes: { correlationId: "1234" } });
+    expect(alteredEvent).toMatchObject({
+      timestamp_created: 1234,
+      timestamp_server: 1234,
+      custom_attributes: { correlationId: "1234" }
+    });
+  });
+
+  it('does not alter the event when no optional parameters are specified', () => {
+    const e = pageViewArticle({
+      articleId: 'article123',
+      articleTitle: 'article title',
+    });
+    const alteredEvent = alterEvent(e, {});
+    expect(alteredEvent).not.toMatchObject({
+      timestamp_created: 1234,
+      timestamp_server: 1234,
+      custom_attributes: { correlationId: "1234" }
     });
   });
 });

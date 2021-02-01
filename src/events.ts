@@ -1,4 +1,4 @@
-import { createEvent, EventsUnion } from './types';
+import { createEvent, EventsUnion, CustomAttributes } from './types';
 
 /**
  * Triggered when the the home page is viewed in the knowledge base.
@@ -101,6 +101,25 @@ export function articleFeedbackReaction(data: {
   });
 }
 
+/**
+ * Alters a given event with optional parameters before being sent.
+ * @param event the event to be sent
+ * @param opts the optional parameters
+ */
+export function alterEvent(event: Events, opts: SendOptions): Events {
+  const alteredEvent = opts.forceTimestamp ?
+    {
+      ...event,
+      timestamp_created: opts.forceTimestamp,
+      timestamp_server: opts.forceTimestamp
+    } : event;
+
+  return opts.customAttributes ?
+    {
+      ...alteredEvent, custom_attributes: opts.customAttributes
+    } : alteredEvent;
+}
+
 export type Events = EventsUnion<
   | typeof pageViewIndex
   | typeof pageViewArticle
@@ -109,3 +128,13 @@ export type Events = EventsUnion<
   | typeof searchClick
   | typeof articleFeedbackReaction
 >;
+
+/**
+ * Options for altering the events before they are sent.
+ * `forceTimestamp` will force the timestamp to allow backfilling of events.
+ * `customAttributes` allows you to pass custom event data, for your own debugging purposes.
+ */
+export type SendOptions = {
+  forceTimestamp?: number;
+  customAttributes?: CustomAttributes;
+};
