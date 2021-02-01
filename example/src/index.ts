@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     events.pageViewArticle({
       articleId: 'art123',
       articleTitle: 'article title',
-    })
+    }),
+    {customAttributes: {correlationId: "1234"}}
   );
 
   document.getElementById('positive')!.onclick = () => {
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   document.getElementById('sync')!.onclick = () => {
-    sendNow([events.pageViewIndex()])
+    sendNow([events.pageViewIndex()], {customAttributes: {correlationId: "1234"}})
       .then(() => {
         console.log('event confirmed sent');
       })
