@@ -5,6 +5,7 @@ setup({
   companyUid: 'konami',
   // endpointURL: 'http://localhost:8000/events',
   endpointURL: 'https://events.elevio-staging.com/v1/events',
+  onError: _e => console.log(`Error sending events`)
 });
 
 // Make sure we wait until the DOM is ready
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       articleId: 'art123',
       articleTitle: 'article title',
     }),
-    {customAttributes: {correlationId: "1234"}}
+    { customAttributes: { correlationId: "1234" } }
   );
 
   document.getElementById('positive')!.onclick = () => {
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   document.getElementById('sync')!.onclick = () => {
-    sendNow([events.pageViewIndex()], {customAttributes: {correlationId: "1234"}})
+    sendNow([events.pageViewIndex()], { customAttributes: { correlationId: "1234" } })
       .then(() => {
         console.log('event confirmed sent');
       })
