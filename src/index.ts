@@ -1,48 +1,36 @@
-import { Events } from './events';
+import { Events, SendOptions } from './events';
 import * as events from './events';
-import { promiseSender, getSender } from './sender';
+import { promiseSender } from './sender';
 import Batch from './batch';
+import {
+  setConfig,
+  User,
+  setLanguageId as _setLanguageId,
+  setUser as _setUser,
+} from './config';
 
-/** @hidden */
-const DEFAULT_INTERVAL = 500;
+
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
 const DEFAULT_ENDPOINT_URL = 'https://events.elev.io/v1/events';
-/** @hidden */
-export let _languageId: string | null = null;
-/** @hidden */
-export let _user: User | null = null;
 
 export { events };
 
 /** @hidden */
 let batch: Batch | null;
 
-/** @hidden */
-type Config = {
-  companyUid: string;
-  isAnonMode: boolean;
-  debugMode: boolean;
-  endpointURL: string;
-  eventType: string;
-};
-
-/** @hidden */
-let config: Config | undefined;
-
-/** @hidden */
-export function getConfig(): Config {
-  if (!config) throw new Error('Please run setup before sending events.');
-  return config;
-}
-
 interface SetupOptions {
   /** The companyUid from Elevio */
   companyUid: string;
 
-  /** How often to send events in ms, default to 500ms */
+  /** How often to send events in ms, default to 50ms */
   interval?: number;
+
+  /** For failed network sends, how many times should it be retried */
+  maxRetries?: number;
+
+  onError?: (err: Error) => void;
 
   /** Should we try to send the events before the page unloads, default to `true` */
   withUnload?: boolean;
@@ -72,26 +60,30 @@ interface SetupOptions {
 export function setup(options: SetupOptions) {
   const {
     companyUid,
-    interval = DEFAULT_INTERVAL,
+    interval,
     withUnload,
     debugMode = false,
     endpointURL = DEFAULT_ENDPOINT_URL,
     eventType = DEFAULT_EVENT_TYPE,
     isAnonMode = false,
     languageId,
+    onError,
+    maxRetries,
   } = options;
-  config = {
+
+  setConfig({
     companyUid,
     debugMode,
     endpointURL,
     eventType,
     isAnonMode,
-  };
+  });
 
   batch = new Batch({
     interval,
     withUnload,
-    handler: getSender(),
+    maxRetries,
+    onError,
   });
 
   if (languageId) {
@@ -99,17 +91,12 @@ export function setup(options: SetupOptions) {
   }
 }
 
-export interface User {
-  id?: string;
-  email: string;
-}
-
 /**
  * This will set the user
  * @param user
  */
 export function setUser(user: User | null) {
-  _user = user;
+  _setUser(user);
 }
 
 /**
@@ -117,30 +104,7 @@ export function setUser(user: User | null) {
  * @param languageId
  */
 export function setLanguageId(languageId: string | null) {
-  if (languageId) {
-    _languageId = languageId.toLowerCase();
-  } else {
-    _languageId = null;
-  }
-}
-
-/**
- * Options for altering the events before they are sent.
- * `force_timestamp` will force the timestamp to allow backfilling of events.
- */
-type SendOptions = {
-  force_timestamp?: number;
-};
-
-function alterEvent(event: Events, opts: SendOptions): Events {
-  if (opts.force_timestamp) {
-    return {
-      ...event,
-      timestamp_created: opts.force_timestamp,
-      timestamp_server: opts.force_timestamp,
-    };
-  }
-  return event;
+  _setLanguageId(languageId);
 }
 
 /**
@@ -151,7 +115,7 @@ function alterEvent(event: Events, opts: SendOptions): Events {
  */
 export function track(event: Events, opts?: SendOptions) {
   if (!batch) throw new Error('Please run setup.');
-  const _event = opts ? alterEvent(event, opts) : event;
+  const _event = opts ? events.alterEvent(event, opts) : event;
   batch.addEvent(_event);
 }
 
@@ -162,9 +126,9 @@ export function track(event: Events, opts?: SendOptions) {
  * @param opts allows you to "alter" the events before being sent
  */
 export function sendNow(
-  events: Array<Events>,
+  eventArray: Array<Events>,
   opts?: SendOptions
 ): Promise<void> {
-  const _events = opts ? events.map(e => alterEvent(e, opts)) : events;
+  const _events = opts ? eventArray.map((e) => events.alterEvent(e, opts)) : eventArray;
   return promiseSender(_events);
 }

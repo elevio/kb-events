@@ -1,7 +1,7 @@
 module.exports = () => ({
   mode: 'development',
 
-  devtool: 'sourcemap',
+  devtool: 'source-map',
 
   entry: './src/index.ts',
 

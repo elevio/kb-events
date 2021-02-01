@@ -1,5 +1,7 @@
 import { getAll } from './pageStats';
 
+export type CustomAttributes = object | string | number;
+
 export interface BaseEvent {
   customer_uid: string;
   // user_uid?: string;
@@ -26,7 +28,7 @@ export interface BaseEvent {
   user_id_external?: string;
   // user_email?: string;
   // user_groups?: Array<string>;
-  custom_attributes?: object | string | number;
+  custom_attributes?: CustomAttributes;
 }
 
 export type Event<T extends string> = {
@@ -55,7 +57,13 @@ export function createEvent<T extends string, C extends BaseContext>(
 ): EventWithContext<T, C>;
 export function createEvent<T extends string, C extends BaseContext>(
   eventName: T,
-  context?: C
+  context: C,
+  customAttributes?: CustomAttributes
+): EventWithContext<T, C>;
+export function createEvent<T extends string, C extends BaseContext>(
+  eventName: T,
+  context?: C,
+  customAttributes?: CustomAttributes
 ): Event<T> | EventWithContext<T, C> {
   // This is what fill's in the basic event details.
   let myContext = context || {};
@@ -63,5 +71,6 @@ export function createEvent<T extends string, C extends BaseContext>(
     ...getAll(),
     ...myContext,
     event_name: eventName,
+    custom_attributes: customAttributes,
   };
 }

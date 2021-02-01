@@ -1,6 +1,5 @@
 {
-  "inputFiles": ["./src"],
-  "entryPoint": "./src/index.ts",
+  "entryPoints": ["./src"],
   "out": "docs",
   "theme": "markdown"
 }

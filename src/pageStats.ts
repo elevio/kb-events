@@ -1,5 +1,5 @@
-import { getConfig, _user, _languageId } from './index';
 import { memoize } from './utils';
+import { getConfig, _user, _languageId } from './config';
 
 const language: string =
   // @ts-ignore userLanguage is just for IE11
