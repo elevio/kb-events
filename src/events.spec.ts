@@ -108,7 +108,7 @@ describe('alterEvent', () => {
     const alteredEvent = alterEvent(e, { forceTimestamp: 1234 });
     expect(alteredEvent).toMatchObject({
       timestamp_created: 1234,
-      timestamp_server: 1234
+      timestamp_server: 1234,
     });
   });
 
@@ -117,8 +117,12 @@ describe('alterEvent', () => {
       articleId: 'article123',
       articleTitle: 'article title',
     });
-    const alteredEvent = alterEvent(e, { customAttributes: { correlationId: "1234" } });
-    expect(alteredEvent).toMatchObject({ custom_attributes: { correlationId: "1234" } });
+    const alteredEvent = alterEvent(e, {
+      customAttributes: { correlationId: '1234' },
+    });
+    expect(alteredEvent).toMatchObject({
+      custom_attributes: { correlationId: '1234' },
+    });
   });
 
   it('does all of the above when all optional parameters are specified', () => {
@@ -126,11 +130,14 @@ describe('alterEvent', () => {
       articleId: 'article123',
       articleTitle: 'article title',
     });
-    const alteredEvent = alterEvent(e, { forceTimestamp: 1234, customAttributes: { correlationId: "1234" } });
+    const alteredEvent = alterEvent(e, {
+      forceTimestamp: 1234,
+      customAttributes: { correlationId: '1234' },
+    });
     expect(alteredEvent).toMatchObject({
       timestamp_created: 1234,
       timestamp_server: 1234,
-      custom_attributes: { correlationId: "1234" }
+      custom_attributes: { correlationId: '1234' },
     });
   });
 
@@ -143,7 +150,7 @@ describe('alterEvent', () => {
     expect(alteredEvent).not.toMatchObject({
       timestamp_created: 1234,
       timestamp_server: 1234,
-      custom_attributes: { correlationId: "1234" }
+      custom_attributes: { correlationId: '1234' },
     });
   });
 });

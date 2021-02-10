@@ -9,7 +9,6 @@ import {
   setUser as _setUser,
 } from './config';
 
-
 /** @hidden */
 const DEFAULT_EVENT_TYPE = 'web-kb-external-event';
 /** @hidden */
@@ -129,6 +128,8 @@ export function sendNow(
   eventArray: Array<Events>,
   opts?: SendOptions
 ): Promise<void> {
-  const _events = opts ? eventArray.map((e) => events.alterEvent(e, opts)) : eventArray;
+  const _events = opts
+    ? eventArray.map((e) => events.alterEvent(e, opts))
+    : eventArray;
   return promiseSender(_events);
 }
