@@ -1,6 +1,8 @@
 module.exports = () => ({
   mode: 'development',
 
+  target: ['web', 'es5'],
+
   devtool: 'source-map',
 
   entry: './src/index.ts',
