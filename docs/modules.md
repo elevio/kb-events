@@ -20,7 +20,7 @@
 
 ### sendNow
 
-▸ **sendNow**(`events`: [*Events*](modules/events.md#events)[], `opts?`: SendOptions): *Promise*<*void*\>
+▸ **sendNow**(`eventArray`: [*Events*](modules/events.md#events)[], `opts?`: [*SendOptions*](modules/events.md#sendoptions)): *Promise*<*void*\>
 
 This sends the events without using the batching q.
 It returns a promise so you can wait for it and will throw an error if it fails.
@@ -29,12 +29,12 @@ It returns a promise so you can wait for it and will throw an error if it fails.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`events` | [*Events*](modules/events.md#events)[] | the array of events to send.   |
-`opts?` | SendOptions | allows you to "alter" the events before being sent    |
+`eventArray` | [*Events*](modules/events.md#events)[] | - |
+`opts?` | [*SendOptions*](modules/events.md#sendoptions) | allows you to "alter" the events before being sent    |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [index.ts:150](https://github.com/elevio/kb-events/blob/381188b/src/index.ts#L150)
+Defined in: [index.ts:127](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L127)
 
 ___
 
@@ -52,7 +52,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.ts:106](https://github.com/elevio/kb-events/blob/381188b/src/index.ts#L106)
+Defined in: [index.ts:105](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L105)
 
 ___
 
@@ -70,7 +70,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.ts:98](https://github.com/elevio/kb-events/blob/381188b/src/index.ts#L98)
+Defined in: [index.ts:97](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L97)
 
 ___
 
@@ -88,13 +88,13 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.ts:60](https://github.com/elevio/kb-events/blob/381188b/src/index.ts#L60)
+Defined in: [index.ts:59](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L59)
 
 ___
 
 ### track
 
-▸ **track**(`event`: [*Events*](modules/events.md#events), `opts?`: SendOptions): *void*
+▸ **track**(`event`: [*Events*](modules/events.md#events), `opts?`: [*SendOptions*](modules/events.md#sendoptions)): *void*
 
 This is the thing that adds the event to the dispatch queue.
 This is non-blocking.
@@ -104,8 +104,8 @@ This is non-blocking.
 Name | Type | Description |
 ------ | ------ | ------ |
 `event` | [*Events*](modules/events.md#events) | the event to be sent.   |
-`opts?` | SendOptions | allows you to "alter" the events before being sent    |
+`opts?` | [*SendOptions*](modules/events.md#sendoptions) | allows you to "alter" the events before being sent    |
 
 **Returns:** *void*
 
-Defined in: [index.ts:138](https://github.com/elevio/kb-events/blob/381188b/src/index.ts#L138)
+Defined in: [index.ts:115](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L115)
