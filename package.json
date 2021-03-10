@@ -22,7 +22,7 @@
   ],
   "types": "./lib/index.d.ts",
   "main": "./lib/kb-events.cjs.js",
-  "module": "./lib/kb-events-fe.esm.js",
+  "module": "./lib/kb-events.esm.js",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
