@@ -1,5 +1,5 @@
 import { getAll } from './pageStats';
-import { setup } from './index';
+import { setup, setUser } from './index';
 
 describe('pageStats', () => {
   beforeEach(() => {
@@ -13,5 +13,23 @@ describe('pageStats', () => {
     expect(data).toMatchObject({
       customer_uid: 'company_456',
     });
+  });
+
+  it('should add user_isloggedin', () => {
+    let data = getAll();
+    expect(data).toMatchObject({
+      user_loggedin: false,
+    });
+
+    setUser({
+      email: 'test@test.com',
+    });
+    data = getAll();
+    expect(data).toMatchObject({
+      user_loggedin: true,
+    });
+
+    // reset user
+    setUser(null);
   });
 });
