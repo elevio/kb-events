@@ -20,7 +20,7 @@
 
 ### sendNow
 
-▸ **sendNow**(`eventArray`: [*Events*](modules/events.md#events)[], `opts?`: [*SendOptions*](modules/events.md#sendoptions)): *Promise*<*void*\>
+▸ **sendNow**(`eventArray`: [*Events*](modules/events.md#events)[], `opts?`: [*SendOptions*](modules/events.md#sendoptions)): *Promise*<void\>
 
 This sends the events without using the batching q.
 It returns a promise so you can wait for it and will throw an error if it fails.
@@ -28,13 +28,13 @@ It returns a promise so you can wait for it and will throw an error if it fails.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `eventArray` | [*Events*](modules/events.md#events)[] | - |
 `opts?` | [*SendOptions*](modules/events.md#sendoptions) | allows you to "alter" the events before being sent    |
 
-**Returns:** *Promise*<*void*\>
+**Returns:** *Promise*<void\>
 
-Defined in: [index.ts:127](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L127)
+Defined in: [index.ts:127](https://github.com/elevio/kb-events/blob/3bb655a/src/index.ts#L127)
 
 ___
 
@@ -46,13 +46,13 @@ This will set the language id that articles + categories are currently displayed
 
 #### Parameters:
 
-Name | Type | Description |
------- | ------ | ------ |
-`languageId` | *string* \| *null* |     |
+Name | Type |
+:------ | :------ |
+`languageId` | *string* \| *null* |
 
 **Returns:** *void*
 
-Defined in: [index.ts:105](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L105)
+Defined in: [index.ts:105](https://github.com/elevio/kb-events/blob/3bb655a/src/index.ts#L105)
 
 ___
 
@@ -64,13 +64,13 @@ This will set the user
 
 #### Parameters:
 
-Name | Type | Description |
------- | ------ | ------ |
-`user` | User \| *null* |     |
+Name | Type |
+:------ | :------ |
+`user` | User \| *null* |
 
 **Returns:** *void*
 
-Defined in: [index.ts:97](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L97)
+Defined in: [index.ts:97](https://github.com/elevio/kb-events/blob/3bb655a/src/index.ts#L97)
 
 ___
 
@@ -83,12 +83,12 @@ Instantiates and configures the analytics sender.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `options` | SetupOptions | see [[Opts]]    |
 
 **Returns:** *void*
 
-Defined in: [index.ts:59](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L59)
+Defined in: [index.ts:59](https://github.com/elevio/kb-events/blob/3bb655a/src/index.ts#L59)
 
 ___
 
@@ -102,10 +102,10 @@ This is non-blocking.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `event` | [*Events*](modules/events.md#events) | the event to be sent.   |
 `opts?` | [*SendOptions*](modules/events.md#sendoptions) | allows you to "alter" the events before being sent    |
 
 **Returns:** *void*
 
-Defined in: [index.ts:115](https://github.com/elevio/kb-events/blob/543de2b/src/index.ts#L115)
+Defined in: [index.ts:115](https://github.com/elevio/kb-events/blob/3bb655a/src/index.ts#L115)
