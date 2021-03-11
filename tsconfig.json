@@ -23,8 +23,9 @@
     "downlevelIteration": true,
     "outDir": "./lib",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["jest", "node"]
   },
   "include": ["./src/**/*", "./types/*", "src/testServer.ts"],
-  "exclude": ["./src/**/*.spec.tsx?", "node_modules"]
+  "exclude": ["node_modules"]
 }
